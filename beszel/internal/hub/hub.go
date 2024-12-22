@@ -214,6 +214,8 @@ func (h *Hub) Run() {
 		return e.Next()
 	})
 
+	h.app.OnServe().BindFunc(h.start_ebpf_monitor)
+
 	if err := h.app.Start(); err != nil {
 		log.Fatal(err)
 	}

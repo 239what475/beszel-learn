@@ -106,11 +106,11 @@ msgstr "{name} silmek istediğinizden emin misiniz?"
 msgid "Automatic copy requires a secure context."
 msgstr "Otomatik kopyalama güvenli bir bağlam gerektirir."
 
-#: src/components/routes/system.tsx:625
+#: src/components/routes/system.tsx:632
 msgid "Average"
 msgstr "Ortalama"
 
-#: src/components/routes/system.tsx:396
+#: src/components/routes/system.tsx:403
 msgid "Average CPU utilization of containers"
 msgstr "Konteynerlerin ortalama CPU kullanımı"
 
@@ -118,15 +118,15 @@ msgstr "Konteynerlerin ortalama CPU kullanımı"
 msgid "Average exceeds <0>{value}{0}</0>"
 msgstr "Ortalama <0>{value}{0}</0> aşıyor"
 
-#: src/components/routes/system.tsx:497
+#: src/components/routes/system.tsx:504
 msgid "Average power consumption of GPUs"
 msgstr "GPU ların ortalama güç tüketimi"
 
-#: src/components/routes/system.tsx:385
+#: src/components/routes/system.tsx:392
 msgid "Average system-wide CPU utilization"
 msgstr "Sistem genelinde ortalama CPU kullanımı"
 
-#: src/components/routes/system.tsx:515
+#: src/components/routes/system.tsx:522
 msgid "Average utilization of {0}"
 msgstr "{0} ortalama kullanımı"
 
@@ -135,7 +135,7 @@ msgstr "{0} ortalama kullanımı"
 msgid "Backups"
 msgstr "Yedekler"
 
-#: src/components/routes/system.tsx:441
+#: src/components/routes/system.tsx:448
 #: src/lib/utils.ts:307
 msgid "Bandwidth"
 msgstr "Bant Genişliği"
@@ -236,7 +236,7 @@ msgid "CPU"
 msgstr "CPU"
 
 #: src/components/charts/area-chart.tsx:56
-#: src/components/routes/system.tsx:384
+#: src/components/routes/system.tsx:391
 #: src/lib/utils.ts:289
 msgid "CPU Usage"
 msgstr "CPU Kullanımı"
@@ -267,29 +267,29 @@ msgstr "Sil"
 msgid "Disk"
 msgstr "Disk"
 
-#: src/components/routes/system.tsx:431
+#: src/components/routes/system.tsx:438
 msgid "Disk I/O"
 msgstr "Disk G/Ç"
 
 #: src/components/charts/disk-chart.tsx:79
-#: src/components/routes/system.tsx:424
+#: src/components/routes/system.tsx:431
 #: src/lib/utils.ts:301
 msgid "Disk Usage"
 msgstr "Disk Kullanımı"
 
-#: src/components/routes/system.tsx:552
+#: src/components/routes/system.tsx:559
 msgid "Disk usage of {extraFsName}"
 msgstr "{extraFsName} disk kullanımı"
 
-#: src/components/routes/system.tsx:395
+#: src/components/routes/system.tsx:402
 msgid "Docker CPU Usage"
 msgstr "Docker CPU Kullanımı"
 
-#: src/components/routes/system.tsx:416
+#: src/components/routes/system.tsx:423
 msgid "Docker Memory Usage"
 msgstr "Docker Bellek Kullanımı"
 
-#: src/components/routes/system.tsx:457
+#: src/components/routes/system.tsx:464
 msgid "Docker Network I/O"
 msgstr "Docker Ağ G/Ç"
 
@@ -357,7 +357,7 @@ msgstr "Test bildirimi gönderilemedi"
 msgid "Failed to update alert"
 msgstr "Uyarı güncellenemedi"
 
-#: src/components/routes/system.tsx:596
+#: src/components/routes/system.tsx:603
 #: src/components/systems-table/systems-table.tsx:324
 msgid "Filter..."
 msgstr "Filtrele..."
@@ -376,7 +376,7 @@ msgstr "Şifrenizi mi unuttunuz?"
 msgid "General"
 msgstr "Genel"
 
-#: src/components/routes/system.tsx:496
+#: src/components/routes/system.tsx:503
 msgid "GPU Power Draw"
 msgstr "GPU Güç Çekimi"
 
@@ -433,7 +433,7 @@ msgid "Manage display and notification preferences."
 msgstr "Görüntüleme ve bildirim tercihlerini yönetin."
 
 #. Chart select field. Please try to keep this short.
-#: src/components/routes/system.tsx:628
+#: src/components/routes/system.tsx:635
 msgid "Max 1 min"
 msgstr "Maks 1 dk"
 
@@ -441,12 +441,12 @@ msgstr "Maks 1 dk"
 msgid "Memory"
 msgstr "Bellek"
 
-#: src/components/routes/system.tsx:406
+#: src/components/routes/system.tsx:413
 #: src/lib/utils.ts:295
 msgid "Memory Usage"
 msgstr "Bellek Kullanımı"
 
-#: src/components/routes/system.tsx:417
+#: src/components/routes/system.tsx:424
 msgid "Memory usage of docker containers"
 msgstr "Docker konteynerlerinin bellek kullanımı"
 
@@ -458,11 +458,11 @@ msgstr "Ad"
 msgid "Net"
 msgstr "Ağ"
 
-#: src/components/routes/system.tsx:458
+#: src/components/routes/system.tsx:465
 msgid "Network traffic of docker containers"
 msgstr "Docker konteynerlerinin ağ trafiği"
 
-#: src/components/routes/system.tsx:443
+#: src/components/routes/system.tsx:450
 msgid "Network traffic of public interfaces"
 msgstr "Genel arayüzlerin ağ trafiği"
 
@@ -562,8 +562,8 @@ msgstr "Lütfen hesabınıza giriş yapın"
 msgid "Port"
 msgstr "Port"
 
-#: src/components/routes/system.tsx:407
-#: src/components/routes/system.tsx:523
+#: src/components/routes/system.tsx:414
+#: src/components/routes/system.tsx:530
 msgid "Precise utilization at the recorded time"
 msgstr "Kayıtlı zamanda kesin kullanım"
 
@@ -649,11 +649,11 @@ msgstr "SMTP ayarları"
 msgid "Status"
 msgstr "Durum"
 
-#: src/components/routes/system.tsx:473
+#: src/components/routes/system.tsx:480
 msgid "Swap space used by the system"
 msgstr "Sistem tarafından kullanılan takas alanı"
 
-#: src/components/routes/system.tsx:472
+#: src/components/routes/system.tsx:479
 msgid "Swap Usage"
 msgstr "Takas Kullanımı"
 
@@ -672,12 +672,12 @@ msgstr "Sistemler"
 msgid "Systems may be managed in a <0>config.yml</0> file inside your data directory."
 msgstr "Sistemler, veri dizininizdeki bir <0>config.yml</0> dosyasında yönetilebilir."
 
-#: src/components/routes/system.tsx:484
+#: src/components/routes/system.tsx:491
 #: src/lib/utils.ts:314
 msgid "Temperature"
 msgstr "Sıcaklık"
 
-#: src/components/routes/system.tsx:485
+#: src/components/routes/system.tsx:492
 msgid "Temperatures of system sensors"
 msgstr "Sistem sensörlerinin sıcaklıkları"
 
@@ -705,11 +705,11 @@ msgstr "Ardından arka uca giriş yapın ve kullanıcılar tablosunda kullanıc�
 msgid "This action cannot be undone. This will permanently delete all current records for {name} from the database."
 msgstr "Bu işlem geri alınamaz. Bu, veritabanından {name} için tüm mevcut kayıtları kalıcı olarak silecektir."
 
-#: src/components/routes/system.tsx:564
+#: src/components/routes/system.tsx:571
 msgid "Throughput of {extraFsName}"
 msgstr "{extraFsName} verimliliği"
 
-#: src/components/routes/system.tsx:432
+#: src/components/routes/system.tsx:439
 msgid "Throughput of root filesystem"
 msgstr "Kök dosya sisteminin verimliliği"
 
@@ -717,8 +717,8 @@ msgstr "Kök dosya sisteminin verimliliği"
 msgid "To email(s)"
 msgstr "E-posta(lar)a"
 
-#: src/components/routes/system.tsx:359
-#: src/components/routes/system.tsx:372
+#: src/components/routes/system.tsx:366
+#: src/components/routes/system.tsx:379
 msgid "Toggle grid"
 msgstr "Izgarayı değiştir"
 
@@ -759,12 +759,12 @@ msgid "Uptime"
 msgstr "Çalışma Süresi"
 
 #: src/components/charts/area-chart.tsx:73
-#: src/components/routes/system.tsx:514
-#: src/components/routes/system.tsx:551
+#: src/components/routes/system.tsx:521
+#: src/components/routes/system.tsx:558
 msgid "Usage"
 msgstr "Kullanım"
 
-#: src/components/routes/system.tsx:424
+#: src/components/routes/system.tsx:431
 msgid "Usage of root partition"
 msgstr "Kök bölümün kullanımı"
 
@@ -779,7 +779,7 @@ msgstr "Kullanıldı"
 msgid "Users"
 msgstr "Kullanıcılar"
 
-#: src/components/routes/system.tsx:662
+#: src/components/routes/system.tsx:669
 msgid "Waiting for enough records to display"
 msgstr "Görüntülemek için yeterli kayıt bekleniyor"
 
@@ -808,4 +808,3 @@ msgstr "YAML Yapılandırması"
 #: src/components/routes/settings/layout.tsx:34
 msgid "Your user settings have been updated."
 msgstr "Kullanıcı ayarlarınız güncellendi."
-
