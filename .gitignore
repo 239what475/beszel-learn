@@ -15,3 +15,5 @@ beszel/build
 *timestamp*
 .swc
 beszel/site/src/locales/**/*.ts
+
+.log

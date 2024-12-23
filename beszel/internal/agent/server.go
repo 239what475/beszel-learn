@@ -31,6 +31,13 @@ func (a *Agent) startServer(pubKey []byte, addr string) {
 	}
 }
 
+type EbpfSession struct {
+	remain_time time.Duration
+	cancel      context.CancelFunc
+}
+
+var exist_ebpf_session = map[string]*EbpfSession{}
+
 func (a *Agent) handleSession(s sshServer.Session) {
 	commands := s.Command()
 
@@ -38,28 +45,39 @@ func (a *Agent) handleSession(s sshServer.Session) {
 		stats := a.gatherStats()
 		if err := json.NewEncoder(s).Encode(stats); err != nil {
 			slog.Error("Error encoding stats", "err", err)
-			s.Exit(1)
+			s.Exit(0)
 			return
 		}
 		s.Exit(0)
 	} else if len(commands) == 3 && commands[0] == "get_ebpf_data" {
+		scriptName := fmt.Sprintf("%s.py", commands[1])
+		script, exist := exist_ebpf_session[scriptName]
+		if exist {
+			output := fmt.Sprintf("script already run, remain time: %.2f s\n", script.remain_time.Seconds())
+			println(output)
+			s.Write([]byte(output))
+			s.Write([]byte("-------io.EOF------"))
+			s.Exit(0)
+			return
+		}
+
+		fullCommand := fmt.Sprintf("python -u %s", scriptName)
+
 		var ctx context.Context
 		var cancel context.CancelFunc
 
 		timeout, _ := strconv.Atoi(commands[2])
 
-		println("timeout: ", timeout)
+		ctx, cancel = context.WithCancel(context.Background())
 
-		if timeout < 0 {
-			ctx, cancel = context.WithCancel(context.Background())
-		} else {
-			ctx, cancel = context.WithTimeout(context.Background(), time.Duration(timeout)*time.Second)
+		exist_ebpf_session[scriptName] = &EbpfSession{
+			remain_time: time.Duration(timeout) * time.Second,
+			cancel:      cancel,
 		}
 
-		defer cancel()
+		println("timeout: ", timeout)
 
-		scriptName := fmt.Sprintf("%s.py", commands[1])
-		fullCommand := fmt.Sprintf("python -u %s", scriptName)
+		defer cancel()
 
 		// 检查文件是否存在
 		if _, err := os.Stat(scriptName); os.IsNotExist(err) {
@@ -76,6 +94,12 @@ func (a *Agent) handleSession(s sshServer.Session) {
 		}
 		var wg sync.WaitGroup
 		wg.Add(1)
+
+		start_send := false
+		var start_time time.Time
+
+		timeoutDuration := time.Duration(timeout) * time.Second
+
 		go func(wg *sync.WaitGroup) {
 			defer wg.Done()
 			reader := bufio.NewReader(stdout)
@@ -83,9 +107,21 @@ func (a *Agent) handleSession(s sshServer.Session) {
 				readString, err := reader.ReadString('\n')
 				if err != nil || err == io.EOF {
 					fmt.Println("执行结束")
+					delete(exist_ebpf_session, scriptName)
 					s.Write([]byte("-------io.EOF------"))
 					return
 				}
+
+				if !start_send && timeoutDuration > 0 {
+					start_send = true
+					start_time = time.Now()
+					go func() {
+						time.Sleep(timeoutDuration)
+						cancel()
+					}()
+				}
+
+				exist_ebpf_session[scriptName].remain_time = time.Until(start_time.Add(timeoutDuration))
 				fmt.Print(readString)
 				s.Write([]byte(readString))
 			}
@@ -94,6 +130,20 @@ func (a *Agent) handleSession(s sshServer.Session) {
 		wg.Wait()
 
 		s.Exit(0)
+	} else if len(commands) == 3 && commands[0] == "stop_ebpf_session" {
+		scriptName := fmt.Sprintf("%s.py", commands[1])
+		script, exist := exist_ebpf_session[scriptName]
+		if exist {
+			script.cancel()
+			delete(exist_ebpf_session, scriptName)
+			s.Write([]byte("-------io.EOF------"))
+			s.Exit(0)
+			return
+		} else {
+			s.Write([]byte("script not found\n"))
+			s.Write([]byte("-------io.EOF------"))
+			s.Exit(0)
+		}
 	} else {
 		s.Exit(1)
 	}
