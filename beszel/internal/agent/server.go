@@ -10,6 +10,7 @@ import (
 	"os"
 	"os/exec"
 	"strconv"
+	"strings"
 	"sync"
 	"time"
 
@@ -50,7 +51,8 @@ func (a *Agent) handleSession(s sshServer.Session) {
 		}
 		s.Exit(0)
 	} else if len(commands) == 3 && commands[0] == "get_ebpf_data" {
-		scriptName := fmt.Sprintf("%s.py", commands[1])
+		subcommands := strings.Split(commands[1], ",")
+		scriptName := fmt.Sprintf("%s.py", subcommands[0])
 		script, exist := exist_ebpf_session[scriptName]
 		if exist {
 			output := fmt.Sprintf("script already run, remain time: %.2f s\n", script.remain_time.Seconds())
@@ -62,6 +64,10 @@ func (a *Agent) handleSession(s sshServer.Session) {
 		}
 
 		fullCommand := fmt.Sprintf("python -u %s", scriptName)
+		if len(subcommands) > 1 {
+			params := strings.Join(subcommands[1:], " ")
+			fullCommand = fmt.Sprintf("%s %s", fullCommand, params)
+		}
 
 		var ctx context.Context
 		var cancel context.CancelFunc
@@ -136,6 +142,7 @@ func (a *Agent) handleSession(s sshServer.Session) {
 		if exist {
 			script.cancel()
 			delete(exist_ebpf_session, scriptName)
+			s.Write([]byte(fmt.Sprintf("end script: %s\n", scriptName)))
 			s.Write([]byte("-------io.EOF------"))
 			s.Exit(0)
 			return
