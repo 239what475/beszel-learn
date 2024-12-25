@@ -53,6 +53,11 @@ export default function SettingsLayout() {
 			icon: SettingsIcon,
 		},
 		{
+			title: t`model`,
+			href: "/model",
+			icon: BellIcon,
+		},
+		{
 			title: t`Notifications`,
 			href: "/settings/notifications",
 			icon: BellIcon,

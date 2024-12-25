@@ -70,6 +70,7 @@ function TheContent({
 				<DialogDescription>
 					<Trans>
 						See{" "}
+						//放置标记，如果需要更改能找到
 						<Link href="/settings/notifications" className="link">
 							notification settings
 						</Link>{" "}

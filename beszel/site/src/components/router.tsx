@@ -6,6 +6,7 @@ export const $router = createRouter(
 		server: "/system/:name",
 		settings: "/settings/:name?",
 		forgot_password: "/forgot-password",
+		model:"/model"
 	},
 	{ links: false }
 )
