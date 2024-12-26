@@ -19,3 +19,11 @@ Enter command (opensnoop,ssh_monitor) and timeout : opensnoop 5
 表示执行opensnoop 5秒，理想情况是能看到输出了
 Enter command (opensnoop,ssh_monitor) and timeout : ssh_monitor -1
 表示一直监控ssh异常登录，后续还得改改，暂时没有退出方式，只能ctrl+c
+
+上面的有些内容过期了，有时间再更新
+
+测试oom： 
+stress-ng --cpu 8 --cpu-load 90 --cpu-method ackermann --vm 200 --vm-bytes 30G --vm-hang 20 --timeout 20s
+
+测试cpu_profile：
+stress-ng --cpu 8 --cpu-load 50 --vm 2 --vm-bytes 3G --vm-keep --io 4 --hdd 2 --hdd-bytes 1G
