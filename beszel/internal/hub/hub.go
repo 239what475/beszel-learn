@@ -29,8 +29,6 @@ import (
 	"github.com/pocketbase/pocketbase/core"
 	"github.com/pocketbase/pocketbase/plugins/migratecmd"
 	"golang.org/x/crypto/ssh"
-
-	ebpf "beszel/internal/hub/ebpf"
 )
 
 type Hub struct {
@@ -216,9 +214,7 @@ func (h *Hub) Run() {
 		return e.Next()
 	})
 
-	h.app.OnServe().BindFunc(func(e *core.ServeEvent) error {
-		return ebpf.Start_ebpf_monitor(h.sshClientConfig, e)
-	})
+	h.app.OnServe().BindFunc(h.start_ebpf_monitor)
 
 	if err := h.app.Start(); err != nil {
 		log.Fatal(err)
