@@ -17,3 +17,4 @@ beszel/build
 beszel/site/src/locales/**/*.ts
 
 .log
+my_test.sh
