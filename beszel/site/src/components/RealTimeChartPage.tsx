@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid } from'recharts';
 import io from'socket.io-client';
-//这里的引用不确定...
-import { navigate } from './router';
-
+import './styles.css'; // 用于添加自定义样式
 
 const socket = io('http://localhost:3000');
 
-const ChartPage: React.FC = () => {
+const ChartPage = ({ open, setOpen }: { open: boolean; setOpen: (open: boolean) => void }) => {
     const [inputValue, setInputValue] = useState('');
-    const [chartData, setChartData] = useState<number[]>([]);
+    const [chartData, setChartData] = useState<number[]>([10, 20, 30, 40, 50]); // 添加模拟数据
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
@@ -29,18 +27,23 @@ const ChartPage: React.FC = () => {
         };
     }, []);
 
-    // 模拟定时更新折线图数据
     useEffect(() => {
-        const intervalId = setInterval(() => {
-            // 实际应替换为从后端获取真实数据的逻辑
-            const newData = Array.from({ length: 5 }, (_, i) => Math.floor(Math.random() * 100));
-            socket.emit('requestData', newData);
-        }, 5000);
-        return () => clearInterval(intervalId);
-    }, []);
+        const down = (e: KeyboardEvent) => {
+            if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+                e.preventDefault();
+                setOpen(false); // 切换页面时关闭当前页面
+            }
+        };
+        document.addEventListener('keydown', down);
+        return () => document.removeEventListener('keydown', down);
+    }, [open, setOpen]);
+
+    if (!open) {
+        return null;
+    }
 
     return (
-        <div style={{ display: 'flex' }}>
+        <div className="chart-page-container">
             <div>
                 <input type="text" value={inputValue} onChange={handleInputChange} />
                 <button onClick={handleSubmit}>提交</button>

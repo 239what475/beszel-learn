@@ -131,7 +131,7 @@ msgid "Average utilization of {0}"
 msgstr ""
 
 #: src/components/command-palette.tsx:183
-#: src/components/navbar.tsx:93
+#: src/components/navbar.tsx:106
 msgid "Backups"
 msgstr "Sauvegardes"
 
@@ -406,7 +406,7 @@ msgstr "Langue"
 msgid "Light"
 msgstr "Clair"
 
-#: src/components/navbar.tsx:104
+#: src/components/navbar.tsx:117
 msgid "Log Out"
 msgstr "Déconnexion"
 
@@ -420,7 +420,7 @@ msgid "Login attempt failed"
 msgstr "Échec de la tentative de connexion"
 
 #: src/components/command-palette.tsx:169
-#: src/components/navbar.tsx:85
+#: src/components/navbar.tsx:98
 msgid "Logs"
 msgstr "Journaux"
 
@@ -428,7 +428,7 @@ msgstr "Journaux"
 msgid "Looking instead for where to create alerts? Click the bell <0/> icons in the systems table."
 msgstr "Vous cherchez plutôt où créer des alertes ? Cliquez sur les icônes de cloche <0/> dans le tableau des systèmes."
 
-#: src/components/routes/settings/layout.tsx:90
+#: src/components/routes/settings/layout.tsx:85
 msgid "Manage display and notification preferences."
 msgstr "Gérer les préférences d'affichage et de notification."
 
@@ -450,10 +450,9 @@ msgstr "Utilisation de la mémoire"
 msgid "Memory usage of docker containers"
 msgstr "Utilisation de la mémoire des conteneurs Docker"
 
-#: src/components/command-palette.tsx:111
 #: src/components/routes/settings/layout.tsx:56
-msgid "model"
-msgstr ""
+#~ msgid "model"
+#~ msgstr ""
 
 #: src/components/add-system.tsx:116
 msgid "Name"
@@ -480,7 +479,7 @@ msgid "No systems found."
 msgstr "Aucun système trouvé."
 
 #: src/components/command-palette.tsx:123
-#: src/components/routes/settings/layout.tsx:61
+#: src/components/routes/settings/layout.tsx:56
 #: src/components/routes/settings/notifications.tsx:74
 msgid "Notifications"
 msgstr "Notifications"
@@ -609,9 +608,9 @@ msgstr "Enregistrez l'adresse en utilisant la touche Entrée ou la virgule. Lais
 msgid "Save Settings"
 msgstr "Enregistrer les paramètres"
 
-#: src/components/navbar.tsx:133
-msgid "Search"
-msgstr "Recherche"
+#: src/components/navbar.tsx:146
+#~ msgid "Search"
+#~ msgstr "Recherche"
 
 #: src/components/command-palette.tsx:46
 msgid "Search for systems or settings..."
@@ -637,14 +636,22 @@ msgstr "Définit la plage de temps par défaut pour les graphiques lorsqu'un sys
 #: src/components/command-palette.tsx:95
 #: src/components/command-palette.tsx:98
 #: src/components/command-palette.tsx:126
-#: src/components/routes/settings/layout.tsx:76
-#: src/components/routes/settings/layout.tsx:87
+#: src/components/routes/settings/layout.tsx:71
+#: src/components/routes/settings/layout.tsx:82
 msgid "Settings"
 msgstr "Paramètres"
 
 #: src/components/routes/settings/layout.tsx:33
 msgid "Settings saved"
 msgstr "Paramètres enregistrés"
+
+#: src/components/navbar.tsx:162
+msgid "Show Chart"
+msgstr ""
+
+#: src/components/navbar.tsx:176
+msgid "Show Command"
+msgstr ""
 
 #: src/components/login/auth-form.tsx:191
 msgid "Sign in"
@@ -673,7 +680,7 @@ msgstr "Utilisation du swap"
 msgid "System"
 msgstr "Système"
 
-#: src/components/navbar.tsx:77
+#: src/components/navbar.tsx:90
 msgid "Systems"
 msgstr "Systèmes"
 
@@ -784,7 +791,7 @@ msgid "Used"
 msgstr "Utilisé"
 
 #: src/components/command-palette.tsx:155
-#: src/components/navbar.tsx:69
+#: src/components/navbar.tsx:82
 msgid "Users"
 msgstr "Utilisateurs"
 
@@ -806,7 +813,7 @@ msgstr "Notifications Webhook / Push"
 msgid "Write"
 msgstr "Écriture"
 
-#: src/components/routes/settings/layout.tsx:66
+#: src/components/routes/settings/layout.tsx:61
 msgid "YAML Config"
 msgstr "Configuration YAML"
 

@@ -131,7 +131,7 @@ msgid "Average utilization of {0}"
 msgstr ""
 
 #: src/components/command-palette.tsx:183
-#: src/components/navbar.tsx:93
+#: src/components/navbar.tsx:106
 msgid "Backups"
 msgstr "備份"
 
@@ -406,7 +406,7 @@ msgstr "語言"
 msgid "Light"
 msgstr "淺色"
 
-#: src/components/navbar.tsx:104
+#: src/components/navbar.tsx:117
 msgid "Log Out"
 msgstr "登出"
 
@@ -420,7 +420,7 @@ msgid "Login attempt failed"
 msgstr "登錄嘗試失敗"
 
 #: src/components/command-palette.tsx:169
-#: src/components/navbar.tsx:85
+#: src/components/navbar.tsx:98
 msgid "Logs"
 msgstr "日誌"
 
@@ -428,7 +428,7 @@ msgstr "日誌"
 msgid "Looking instead for where to create alerts? Click the bell <0/> icons in the systems table."
 msgstr "在尋找創建警報的位置嗎？點擊系統表中的鈴鐺<0/>圖標。"
 
-#: src/components/routes/settings/layout.tsx:90
+#: src/components/routes/settings/layout.tsx:85
 msgid "Manage display and notification preferences."
 msgstr "管理顯示和通知偏好。"
 
@@ -450,10 +450,9 @@ msgstr "記憶體使用"
 msgid "Memory usage of docker containers"
 msgstr "Docker容器的記憶體使用"
 
-#: src/components/command-palette.tsx:111
 #: src/components/routes/settings/layout.tsx:56
-msgid "model"
-msgstr ""
+#~ msgid "model"
+#~ msgstr ""
 
 #: src/components/add-system.tsx:116
 msgid "Name"
@@ -480,7 +479,7 @@ msgid "No systems found."
 msgstr "未找到系統。"
 
 #: src/components/command-palette.tsx:123
-#: src/components/routes/settings/layout.tsx:61
+#: src/components/routes/settings/layout.tsx:56
 #: src/components/routes/settings/notifications.tsx:74
 msgid "Notifications"
 msgstr "通知"
@@ -609,9 +608,9 @@ msgstr "使用回車鍵或逗號保存地址。留空以禁用電子郵件通知
 msgid "Save Settings"
 msgstr "保存設置"
 
-#: src/components/navbar.tsx:133
-msgid "Search"
-msgstr "搜索"
+#: src/components/navbar.tsx:146
+#~ msgid "Search"
+#~ msgstr "搜索"
 
 #: src/components/command-palette.tsx:46
 msgid "Search for systems or settings..."
@@ -637,14 +636,22 @@ msgstr "設置查看系統時圖表的默認時間範圍。"
 #: src/components/command-palette.tsx:95
 #: src/components/command-palette.tsx:98
 #: src/components/command-palette.tsx:126
-#: src/components/routes/settings/layout.tsx:76
-#: src/components/routes/settings/layout.tsx:87
+#: src/components/routes/settings/layout.tsx:71
+#: src/components/routes/settings/layout.tsx:82
 msgid "Settings"
 msgstr "設置"
 
 #: src/components/routes/settings/layout.tsx:33
 msgid "Settings saved"
 msgstr "設置已保存"
+
+#: src/components/navbar.tsx:162
+msgid "Show Chart"
+msgstr ""
+
+#: src/components/navbar.tsx:176
+msgid "Show Command"
+msgstr ""
 
 #: src/components/login/auth-form.tsx:191
 msgid "Sign in"
@@ -673,7 +680,7 @@ msgstr "交換使用"
 msgid "System"
 msgstr "系統"
 
-#: src/components/navbar.tsx:77
+#: src/components/navbar.tsx:90
 msgid "Systems"
 msgstr "系統"
 
@@ -784,7 +791,7 @@ msgid "Used"
 msgstr "已用"
 
 #: src/components/command-palette.tsx:155
-#: src/components/navbar.tsx:69
+#: src/components/navbar.tsx:82
 msgid "Users"
 msgstr "用戶"
 
@@ -806,7 +813,7 @@ msgstr "Webhook / 推送通知"
 msgid "Write"
 msgstr "寫入"
 
-#: src/components/routes/settings/layout.tsx:66
+#: src/components/routes/settings/layout.tsx:61
 msgid "YAML Config"
 msgstr "YAML配置"
 
