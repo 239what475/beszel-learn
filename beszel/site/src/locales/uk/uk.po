@@ -76,11 +76,11 @@ msgstr "Додати URL"
 msgid "Adjust display options for charts."
 msgstr "Налаштуйте параметри відображення для графіків."
 
-#: src/components/command-palette.tsx:132
 #: src/components/command-palette.tsx:145
-#: src/components/command-palette.tsx:159
-#: src/components/command-palette.tsx:173
-#: src/components/command-palette.tsx:188
+#: src/components/command-palette.tsx:158
+#: src/components/command-palette.tsx:172
+#: src/components/command-palette.tsx:186
+#: src/components/command-palette.tsx:201
 msgid "Admin"
 msgstr "Адміністратор"
 
@@ -93,7 +93,7 @@ msgstr "Агент"
 msgid "Alerts"
 msgstr "Сповіщення"
 
-#: src/components/alerts/alert-button.tsx:88
+#: src/components/alerts/alert-button.tsx:89
 #: src/components/systems-table/systems-table.tsx:317
 msgid "All Systems"
 msgstr "Всі системи"
@@ -106,11 +106,11 @@ msgstr "Ви впевнені, що хочете видалити {name}?"
 msgid "Automatic copy requires a secure context."
 msgstr "Автоматичне копіювання вимагає безпечного контексту."
 
-#: src/components/routes/system.tsx:632
+#: src/components/routes/system.tsx:625
 msgid "Average"
 msgstr "Середнє"
 
-#: src/components/routes/system.tsx:403
+#: src/components/routes/system.tsx:396
 msgid "Average CPU utilization of containers"
 msgstr "Середнє використання CPU контейнерами"
 
@@ -118,24 +118,24 @@ msgstr "Середнє використання CPU контейнерами"
 msgid "Average exceeds <0>{value}{0}</0>"
 msgstr "Середнє перевищує <0>{value}{0}</0>"
 
-#: src/components/routes/system.tsx:504
+#: src/components/routes/system.tsx:497
 msgid "Average power consumption of GPUs"
 msgstr "Середнє енергоспоживання GPUs"
 
-#: src/components/routes/system.tsx:392
+#: src/components/routes/system.tsx:385
 msgid "Average system-wide CPU utilization"
 msgstr "Середнє використання CPU по всій системі"
 
-#: src/components/routes/system.tsx:522
+#: src/components/routes/system.tsx:515
 msgid "Average utilization of {0}"
 msgstr "Середнє використання {0}"
 
-#: src/components/command-palette.tsx:170
+#: src/components/command-palette.tsx:183
 #: src/components/navbar.tsx:93
 msgid "Backups"
 msgstr "Резервні копії"
 
-#: src/components/routes/system.tsx:448
+#: src/components/routes/system.tsx:441
 #: src/lib/utils.ts:307
 msgid "Bandwidth"
 msgstr "Пропускна здатність"
@@ -236,7 +236,7 @@ msgid "CPU"
 msgstr "ЦП"
 
 #: src/components/charts/area-chart.tsx:56
-#: src/components/routes/system.tsx:391
+#: src/components/routes/system.tsx:384
 #: src/lib/utils.ts:289
 msgid "CPU Usage"
 msgstr "Використання ЦП"
@@ -267,33 +267,33 @@ msgstr "Видалити"
 msgid "Disk"
 msgstr "Диск"
 
-#: src/components/routes/system.tsx:438
+#: src/components/routes/system.tsx:431
 msgid "Disk I/O"
 msgstr "Дисковий ввід/вивід"
 
 #: src/components/charts/disk-chart.tsx:79
-#: src/components/routes/system.tsx:431
+#: src/components/routes/system.tsx:424
 #: src/lib/utils.ts:301
 msgid "Disk Usage"
 msgstr "Використання диска"
 
-#: src/components/routes/system.tsx:559
+#: src/components/routes/system.tsx:552
 msgid "Disk usage of {extraFsName}"
 msgstr "Використання диска {extraFsName}"
 
-#: src/components/routes/system.tsx:402
+#: src/components/routes/system.tsx:395
 msgid "Docker CPU Usage"
 msgstr "Використання ЦП Docker"
 
-#: src/components/routes/system.tsx:423
+#: src/components/routes/system.tsx:416
 msgid "Docker Memory Usage"
 msgstr "Використання пам'яті Docker"
 
-#: src/components/routes/system.tsx:464
+#: src/components/routes/system.tsx:457
 msgid "Docker Network I/O"
 msgstr "Мережевий ввід/вивід Docker"
 
-#: src/components/command-palette.tsx:124
+#: src/components/command-palette.tsx:137
 msgid "Documentation"
 msgstr "Документація"
 
@@ -357,7 +357,7 @@ msgstr "Не вдалося надіслати тестове сповіщенн
 msgid "Failed to update alert"
 msgstr "Не вдалося оновити сповіщення"
 
-#: src/components/routes/system.tsx:603
+#: src/components/routes/system.tsx:596
 #: src/components/systems-table/systems-table.tsx:324
 msgid "Filter..."
 msgstr "Фільтр..."
@@ -376,7 +376,7 @@ msgstr "Забули пароль?"
 msgid "General"
 msgstr "Загальні"
 
-#: src/components/routes/system.tsx:503
+#: src/components/routes/system.tsx:496
 msgid "GPU Power Draw"
 msgstr "Енергоспоживання GPU"
 
@@ -419,7 +419,7 @@ msgstr "Увійти"
 msgid "Login attempt failed"
 msgstr "Спроба входу не вдалася"
 
-#: src/components/command-palette.tsx:156
+#: src/components/command-palette.tsx:169
 #: src/components/navbar.tsx:85
 msgid "Logs"
 msgstr "Журнали"
@@ -428,12 +428,12 @@ msgstr "Журнали"
 msgid "Looking instead for where to create alerts? Click the bell <0/> icons in the systems table."
 msgstr "Шукаєте, де створити сповіщення? Натисніть на іконки дзвінка <0/> в таблиці систем."
 
-#: src/components/routes/settings/layout.tsx:85
+#: src/components/routes/settings/layout.tsx:90
 msgid "Manage display and notification preferences."
 msgstr "Керуйте параметрами відображення та сповіщень."
 
 #. Chart select field. Please try to keep this short.
-#: src/components/routes/system.tsx:635
+#: src/components/routes/system.tsx:628
 msgid "Max 1 min"
 msgstr "Макс 1 хв"
 
@@ -441,14 +441,19 @@ msgstr "Макс 1 хв"
 msgid "Memory"
 msgstr "Пам'ять"
 
-#: src/components/routes/system.tsx:413
+#: src/components/routes/system.tsx:406
 #: src/lib/utils.ts:295
 msgid "Memory Usage"
 msgstr "Використання пам'яті"
 
-#: src/components/routes/system.tsx:424
+#: src/components/routes/system.tsx:417
 msgid "Memory usage of docker containers"
 msgstr "Використання пам'яті контейнерами Docker"
+
+#: src/components/command-palette.tsx:111
+#: src/components/routes/settings/layout.tsx:56
+msgid "model"
+msgstr ""
 
 #: src/components/add-system.tsx:116
 msgid "Name"
@@ -458,11 +463,11 @@ msgstr "Ім'я"
 msgid "Net"
 msgstr "Мережа"
 
-#: src/components/routes/system.tsx:465
+#: src/components/routes/system.tsx:458
 msgid "Network traffic of docker containers"
 msgstr "Мережевий трафік контейнерів Docker"
 
-#: src/components/routes/system.tsx:450
+#: src/components/routes/system.tsx:443
 msgid "Network traffic of public interfaces"
 msgstr "Мережевий трафік публічних інтерфейсів"
 
@@ -474,8 +479,8 @@ msgstr "Результатів не знайдено."
 msgid "No systems found."
 msgstr "Систем не знайдено."
 
-#: src/components/command-palette.tsx:110
-#: src/components/routes/settings/layout.tsx:56
+#: src/components/command-palette.tsx:123
+#: src/components/routes/settings/layout.tsx:61
 #: src/components/routes/settings/notifications.tsx:74
 msgid "Notifications"
 msgstr "Сповіщення"
@@ -496,7 +501,7 @@ msgstr "Відкрити меню"
 msgid "Or continue with"
 msgstr "Або продовжити з"
 
-#: src/components/alerts/alert-button.tsx:109
+#: src/components/alerts/alert-button.tsx:110
 msgid "Overwrite existing alerts"
 msgstr "Перезаписати існуючі сповіщення"
 
@@ -562,8 +567,8 @@ msgstr "Будь ласка, увійдіть у свій обліковий з�
 msgid "Port"
 msgstr "Порт"
 
-#: src/components/routes/system.tsx:414
-#: src/components/routes/system.tsx:530
+#: src/components/routes/system.tsx:407
+#: src/components/routes/system.tsx:523
 msgid "Precise utilization at the recorded time"
 msgstr "Точне використання в записаний час"
 
@@ -613,8 +618,12 @@ msgid "Search for systems or settings..."
 msgstr "Шукати системи або налаштування..."
 
 #: src/components/alerts/alert-button.tsx:71
-msgid "See <0>notification settings</0> to configure how you receive alerts."
-msgstr "Перегляньте <0>налаштування сповіщень</0>, щоб налаштувати, як ви отримуєте сповіщення."
+msgid "See //放置标记，如果需要更改能找到<0>notification settings</0> to configure how you receive alerts."
+msgstr ""
+
+#: src/components/alerts/alert-button.tsx:71
+#~ msgid "See <0>notification settings</0> to configure how you receive alerts."
+#~ msgstr "Перегляньте <0>налаштування сповіщень</0>, щоб налаштувати, як ви отримуєте сповіщення."
 
 #. Network bytes sent (upload)
 #: src/components/charts/area-chart.tsx:64
@@ -627,9 +636,9 @@ msgstr "Встановлює стандартний діапазон часу д
 
 #: src/components/command-palette.tsx:95
 #: src/components/command-palette.tsx:98
-#: src/components/command-palette.tsx:113
-#: src/components/routes/settings/layout.tsx:71
-#: src/components/routes/settings/layout.tsx:82
+#: src/components/command-palette.tsx:126
+#: src/components/routes/settings/layout.tsx:76
+#: src/components/routes/settings/layout.tsx:87
 msgid "Settings"
 msgstr "Налаштування"
 
@@ -641,7 +650,7 @@ msgstr "Налаштування збережено"
 msgid "Sign in"
 msgstr "Увійти"
 
-#: src/components/command-palette.tsx:185
+#: src/components/command-palette.tsx:198
 msgid "SMTP settings"
 msgstr "Налаштування SMTP"
 
@@ -649,11 +658,11 @@ msgstr "Налаштування SMTP"
 msgid "Status"
 msgstr "Статус"
 
-#: src/components/routes/system.tsx:480
+#: src/components/routes/system.tsx:473
 msgid "Swap space used by the system"
 msgstr "Область підкачки, використана системою"
 
-#: src/components/routes/system.tsx:479
+#: src/components/routes/system.tsx:472
 msgid "Swap Usage"
 msgstr "Використання підкачки"
 
@@ -672,12 +681,12 @@ msgstr "Системи"
 msgid "Systems may be managed in a <0>config.yml</0> file inside your data directory."
 msgstr "Системи можуть керуватися у файлі <0>config.yml</0> у вашій директорії даних."
 
-#: src/components/routes/system.tsx:491
+#: src/components/routes/system.tsx:484
 #: src/lib/utils.ts:314
 msgid "Temperature"
 msgstr "Температура"
 
-#: src/components/routes/system.tsx:492
+#: src/components/routes/system.tsx:485
 msgid "Temperatures of system sensors"
 msgstr "Температури датчиків системи"
 
@@ -705,11 +714,11 @@ msgstr "Потім увійдіть у бекенд і скиньте парол
 msgid "This action cannot be undone. This will permanently delete all current records for {name} from the database."
 msgstr "Цю дію не можна скасувати. Це назавжди видалить всі поточні записи для {name} з бази даних."
 
-#: src/components/routes/system.tsx:571
+#: src/components/routes/system.tsx:564
 msgid "Throughput of {extraFsName}"
 msgstr "Пропускна здатність {extraFsName}"
 
-#: src/components/routes/system.tsx:439
+#: src/components/routes/system.tsx:432
 msgid "Throughput of root filesystem"
 msgstr "Пропускна здатність кореневої файлової системи"
 
@@ -717,8 +726,8 @@ msgstr "Пропускна здатність кореневої файлово�
 msgid "To email(s)"
 msgstr "На електронну пошту"
 
-#: src/components/routes/system.tsx:366
-#: src/components/routes/system.tsx:379
+#: src/components/routes/system.tsx:359
+#: src/components/routes/system.tsx:372
 msgid "Toggle grid"
 msgstr "Перемкнути сітку"
 
@@ -759,12 +768,12 @@ msgid "Uptime"
 msgstr "Час роботи"
 
 #: src/components/charts/area-chart.tsx:73
-#: src/components/routes/system.tsx:521
-#: src/components/routes/system.tsx:558
+#: src/components/routes/system.tsx:514
+#: src/components/routes/system.tsx:551
 msgid "Usage"
 msgstr "Використання"
 
-#: src/components/routes/system.tsx:431
+#: src/components/routes/system.tsx:424
 msgid "Usage of root partition"
 msgstr "Використання кореневого розділу"
 
@@ -774,12 +783,12 @@ msgstr "Використання кореневого розділу"
 msgid "Used"
 msgstr "Використано"
 
-#: src/components/command-palette.tsx:142
+#: src/components/command-palette.tsx:155
 #: src/components/navbar.tsx:69
 msgid "Users"
 msgstr "Користувачі"
 
-#: src/components/routes/system.tsx:669
+#: src/components/routes/system.tsx:662
 msgid "Waiting for enough records to display"
 msgstr "Очікування достатньої кількості записів для відображення"
 
@@ -797,7 +806,7 @@ msgstr "Webhook / Push сповіщення"
 msgid "Write"
 msgstr "Запис"
 
-#: src/components/routes/settings/layout.tsx:61
+#: src/components/routes/settings/layout.tsx:66
 msgid "YAML Config"
 msgstr "Конфігурація YAML"
 

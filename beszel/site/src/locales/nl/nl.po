@@ -76,11 +76,11 @@ msgstr "Voeg URL toe"
 msgid "Adjust display options for charts."
 msgstr "Weergaveopties voor grafieken aanpassen."
 
-#: src/components/command-palette.tsx:132
 #: src/components/command-palette.tsx:145
-#: src/components/command-palette.tsx:159
-#: src/components/command-palette.tsx:173
-#: src/components/command-palette.tsx:188
+#: src/components/command-palette.tsx:158
+#: src/components/command-palette.tsx:172
+#: src/components/command-palette.tsx:186
+#: src/components/command-palette.tsx:201
 msgid "Admin"
 msgstr "Admin"
 
@@ -93,7 +93,7 @@ msgstr "Agent"
 msgid "Alerts"
 msgstr "Waarschuwingen"
 
-#: src/components/alerts/alert-button.tsx:88
+#: src/components/alerts/alert-button.tsx:89
 #: src/components/systems-table/systems-table.tsx:317
 msgid "All Systems"
 msgstr "Alle systemen"
@@ -106,11 +106,11 @@ msgstr "Weet je zeker dat je {name} wilt verwijderen?"
 msgid "Automatic copy requires a secure context."
 msgstr "Automatisch kopiëren vereist een veilige context."
 
-#: src/components/routes/system.tsx:632
+#: src/components/routes/system.tsx:625
 msgid "Average"
 msgstr "Gemiddelde"
 
-#: src/components/routes/system.tsx:403
+#: src/components/routes/system.tsx:396
 msgid "Average CPU utilization of containers"
 msgstr "Gemiddeld CPU-gebruik van containers"
 
@@ -118,24 +118,24 @@ msgstr "Gemiddeld CPU-gebruik van containers"
 msgid "Average exceeds <0>{value}{0}</0>"
 msgstr "Gemiddelde overschrijdt <0>{value}{0}</0>"
 
-#: src/components/routes/system.tsx:504
+#: src/components/routes/system.tsx:497
 msgid "Average power consumption of GPUs"
 msgstr "Gemiddeld stroomverbruik van GPU's"
 
-#: src/components/routes/system.tsx:392
+#: src/components/routes/system.tsx:385
 msgid "Average system-wide CPU utilization"
 msgstr "Gemiddeld systeembrede CPU-gebruik"
 
-#: src/components/routes/system.tsx:522
+#: src/components/routes/system.tsx:515
 msgid "Average utilization of {0}"
 msgstr "Gemiddeld gebruik van {0}"
 
-#: src/components/command-palette.tsx:170
+#: src/components/command-palette.tsx:183
 #: src/components/navbar.tsx:93
 msgid "Backups"
 msgstr "Back-ups"
 
-#: src/components/routes/system.tsx:448
+#: src/components/routes/system.tsx:441
 #: src/lib/utils.ts:307
 msgid "Bandwidth"
 msgstr "Bandbreedte"
@@ -236,7 +236,7 @@ msgid "CPU"
 msgstr "CPU"
 
 #: src/components/charts/area-chart.tsx:56
-#: src/components/routes/system.tsx:391
+#: src/components/routes/system.tsx:384
 #: src/lib/utils.ts:289
 msgid "CPU Usage"
 msgstr "Processorgebruik"
@@ -267,33 +267,33 @@ msgstr "Verwijderen"
 msgid "Disk"
 msgstr "Schijf"
 
-#: src/components/routes/system.tsx:438
+#: src/components/routes/system.tsx:431
 msgid "Disk I/O"
 msgstr "Schijf I/O"
 
 #: src/components/charts/disk-chart.tsx:79
-#: src/components/routes/system.tsx:431
+#: src/components/routes/system.tsx:424
 #: src/lib/utils.ts:301
 msgid "Disk Usage"
 msgstr "Schijfgebruik"
 
-#: src/components/routes/system.tsx:559
+#: src/components/routes/system.tsx:552
 msgid "Disk usage of {extraFsName}"
 msgstr "Schijfgebruik van {extraFsName}"
 
-#: src/components/routes/system.tsx:402
+#: src/components/routes/system.tsx:395
 msgid "Docker CPU Usage"
 msgstr "Docker CPU-gebruik"
 
-#: src/components/routes/system.tsx:423
+#: src/components/routes/system.tsx:416
 msgid "Docker Memory Usage"
 msgstr "Docker geheugengebruik"
 
-#: src/components/routes/system.tsx:464
+#: src/components/routes/system.tsx:457
 msgid "Docker Network I/O"
 msgstr "Docker netwerk I/O"
 
-#: src/components/command-palette.tsx:124
+#: src/components/command-palette.tsx:137
 msgid "Documentation"
 msgstr "Documentatie"
 
@@ -357,7 +357,7 @@ msgstr "Versturen test notificatie mislukt"
 msgid "Failed to update alert"
 msgstr "Bijwerken waarschuwing mislukt"
 
-#: src/components/routes/system.tsx:603
+#: src/components/routes/system.tsx:596
 #: src/components/systems-table/systems-table.tsx:324
 msgid "Filter..."
 msgstr "Filter..."
@@ -376,7 +376,7 @@ msgstr "Wachtwoord vergeten?"
 msgid "General"
 msgstr "Algemeen"
 
-#: src/components/routes/system.tsx:503
+#: src/components/routes/system.tsx:496
 msgid "GPU Power Draw"
 msgstr "GPU stroomverbruik"
 
@@ -419,7 +419,7 @@ msgstr "Aanmelden"
 msgid "Login attempt failed"
 msgstr "Aanmelding mislukt"
 
-#: src/components/command-palette.tsx:156
+#: src/components/command-palette.tsx:169
 #: src/components/navbar.tsx:85
 msgid "Logs"
 msgstr "Logs"
@@ -428,12 +428,12 @@ msgstr "Logs"
 msgid "Looking instead for where to create alerts? Click the bell <0/> icons in the systems table."
 msgstr "Zoek je waar je meldingen kunt aanmaken? Klik op de bel <0/> in de systeemtabel."
 
-#: src/components/routes/settings/layout.tsx:85
+#: src/components/routes/settings/layout.tsx:90
 msgid "Manage display and notification preferences."
 msgstr "Weergave- en notificatievoorkeuren beheren."
 
 #. Chart select field. Please try to keep this short.
-#: src/components/routes/system.tsx:635
+#: src/components/routes/system.tsx:628
 msgid "Max 1 min"
 msgstr "Max 1 min"
 
@@ -441,14 +441,19 @@ msgstr "Max 1 min"
 msgid "Memory"
 msgstr "Geheugen"
 
-#: src/components/routes/system.tsx:413
+#: src/components/routes/system.tsx:406
 #: src/lib/utils.ts:295
 msgid "Memory Usage"
 msgstr "Geheugengebruik"
 
-#: src/components/routes/system.tsx:424
+#: src/components/routes/system.tsx:417
 msgid "Memory usage of docker containers"
 msgstr "Geheugengebruik van docker containers"
+
+#: src/components/command-palette.tsx:111
+#: src/components/routes/settings/layout.tsx:56
+msgid "model"
+msgstr ""
 
 #: src/components/add-system.tsx:116
 msgid "Name"
@@ -458,11 +463,11 @@ msgstr "Naam"
 msgid "Net"
 msgstr "Net"
 
-#: src/components/routes/system.tsx:465
+#: src/components/routes/system.tsx:458
 msgid "Network traffic of docker containers"
 msgstr "Netwerkverkeer van docker containers"
 
-#: src/components/routes/system.tsx:450
+#: src/components/routes/system.tsx:443
 msgid "Network traffic of public interfaces"
 msgstr "Netwerkverkeer van publieke interfaces"
 
@@ -474,8 +479,8 @@ msgstr "Geen resultaten gevonden."
 msgid "No systems found."
 msgstr "Geen systemen gevonden."
 
-#: src/components/command-palette.tsx:110
-#: src/components/routes/settings/layout.tsx:56
+#: src/components/command-palette.tsx:123
+#: src/components/routes/settings/layout.tsx:61
 #: src/components/routes/settings/notifications.tsx:74
 msgid "Notifications"
 msgstr "Meldingen"
@@ -496,7 +501,7 @@ msgstr "Open menu"
 msgid "Or continue with"
 msgstr "Of ga verder met"
 
-#: src/components/alerts/alert-button.tsx:109
+#: src/components/alerts/alert-button.tsx:110
 msgid "Overwrite existing alerts"
 msgstr "Overschrijf bestaande waarschuwingen"
 
@@ -562,8 +567,8 @@ msgstr "Meld je aan bij je account"
 msgid "Port"
 msgstr "Poort"
 
-#: src/components/routes/system.tsx:414
-#: src/components/routes/system.tsx:530
+#: src/components/routes/system.tsx:407
+#: src/components/routes/system.tsx:523
 msgid "Precise utilization at the recorded time"
 msgstr "Nauwkeurig gebruik op de opgenomen tijd"
 
@@ -613,8 +618,12 @@ msgid "Search for systems or settings..."
 msgstr "Zoek naar systemen of instellingen..."
 
 #: src/components/alerts/alert-button.tsx:71
-msgid "See <0>notification settings</0> to configure how you receive alerts."
-msgstr "Zie <0>notificatie-instellingen</0> om te configureren hoe je meldingen ontvangt."
+msgid "See //放置标记，如果需要更改能找到<0>notification settings</0> to configure how you receive alerts."
+msgstr ""
+
+#: src/components/alerts/alert-button.tsx:71
+#~ msgid "See <0>notification settings</0> to configure how you receive alerts."
+#~ msgstr "Zie <0>notificatie-instellingen</0> om te configureren hoe je meldingen ontvangt."
 
 #. Network bytes sent (upload)
 #: src/components/charts/area-chart.tsx:64
@@ -627,9 +636,9 @@ msgstr "Stelt het standaard tijdsbereik voor grafieken in wanneer een systeem wo
 
 #: src/components/command-palette.tsx:95
 #: src/components/command-palette.tsx:98
-#: src/components/command-palette.tsx:113
-#: src/components/routes/settings/layout.tsx:71
-#: src/components/routes/settings/layout.tsx:82
+#: src/components/command-palette.tsx:126
+#: src/components/routes/settings/layout.tsx:76
+#: src/components/routes/settings/layout.tsx:87
 msgid "Settings"
 msgstr "Instellingen"
 
@@ -641,7 +650,7 @@ msgstr "Instellingen opgeslagen"
 msgid "Sign in"
 msgstr "Aanmelden"
 
-#: src/components/command-palette.tsx:185
+#: src/components/command-palette.tsx:198
 msgid "SMTP settings"
 msgstr "SMTP-instellingen"
 
@@ -649,11 +658,11 @@ msgstr "SMTP-instellingen"
 msgid "Status"
 msgstr "Status"
 
-#: src/components/routes/system.tsx:480
+#: src/components/routes/system.tsx:473
 msgid "Swap space used by the system"
 msgstr "Swap ruimte gebruikt door het systeem"
 
-#: src/components/routes/system.tsx:479
+#: src/components/routes/system.tsx:472
 msgid "Swap Usage"
 msgstr "Swap gebruik"
 
@@ -672,12 +681,12 @@ msgstr "Systemen"
 msgid "Systems may be managed in a <0>config.yml</0> file inside your data directory."
 msgstr "Systemen kunnen worden beheerd in een <0>config.yml</0> bestand in je data map."
 
-#: src/components/routes/system.tsx:491
+#: src/components/routes/system.tsx:484
 #: src/lib/utils.ts:314
 msgid "Temperature"
 msgstr "Temperatuur"
 
-#: src/components/routes/system.tsx:492
+#: src/components/routes/system.tsx:485
 msgid "Temperatures of system sensors"
 msgstr "Temperatuur van systeem sensoren"
 
@@ -705,11 +714,11 @@ msgstr "Log vervolgens in op de backend en reset het wachtwoord van je gebruiker
 msgid "This action cannot be undone. This will permanently delete all current records for {name} from the database."
 msgstr "Deze actie kan niet ongedaan worden gemaakt. Dit zal alle huidige records voor {name} permanent verwijderen uit de database."
 
-#: src/components/routes/system.tsx:571
+#: src/components/routes/system.tsx:564
 msgid "Throughput of {extraFsName}"
 msgstr "Doorvoer van {extraFsName}"
 
-#: src/components/routes/system.tsx:439
+#: src/components/routes/system.tsx:432
 msgid "Throughput of root filesystem"
 msgstr "Doorvoer van het root bestandssysteem"
 
@@ -717,8 +726,8 @@ msgstr "Doorvoer van het root bestandssysteem"
 msgid "To email(s)"
 msgstr "Naar e-mail(s)"
 
-#: src/components/routes/system.tsx:366
-#: src/components/routes/system.tsx:379
+#: src/components/routes/system.tsx:359
+#: src/components/routes/system.tsx:372
 msgid "Toggle grid"
 msgstr "Schakel raster"
 
@@ -759,12 +768,12 @@ msgid "Uptime"
 msgstr "Actief"
 
 #: src/components/charts/area-chart.tsx:73
-#: src/components/routes/system.tsx:521
-#: src/components/routes/system.tsx:558
+#: src/components/routes/system.tsx:514
+#: src/components/routes/system.tsx:551
 msgid "Usage"
 msgstr "Gebruik"
 
-#: src/components/routes/system.tsx:431
+#: src/components/routes/system.tsx:424
 msgid "Usage of root partition"
 msgstr "Gebruik van root-partitie"
 
@@ -774,12 +783,12 @@ msgstr "Gebruik van root-partitie"
 msgid "Used"
 msgstr "Gebruikt"
 
-#: src/components/command-palette.tsx:142
+#: src/components/command-palette.tsx:155
 #: src/components/navbar.tsx:69
 msgid "Users"
 msgstr "Gebruikers"
 
-#: src/components/routes/system.tsx:669
+#: src/components/routes/system.tsx:662
 msgid "Waiting for enough records to display"
 msgstr "Wachtend op genoeg records om weer te geven"
 
@@ -797,7 +806,7 @@ msgstr "Webhook / Pushmeldingen"
 msgid "Write"
 msgstr "Schrijven"
 
-#: src/components/routes/settings/layout.tsx:61
+#: src/components/routes/settings/layout.tsx:66
 msgid "YAML Config"
 msgstr "YAML Configuratie"
 

@@ -1,3 +1,4 @@
+// top-bar
 import { useState, lazy, Suspense } from "react"
 import { Button, buttonVariants } from "@/components/ui/button"
 import {
@@ -43,6 +44,12 @@ export default function Navbar() {
 			<div className="flex items-center ms-auto">
 				<LangToggle />
 				<ModeToggle />
+				<Link 
+					href="/model"
+					aria-label="model"
+					className={cn("", buttonVariants({ variant: "ghost", size: "icon" }))}>
+					<SettingsIcon className="h-[1.2rem] w-[1.2rem]" />
+				</Link>
 				<Link
 					href="/settings/general"
 					aria-label="Settings"

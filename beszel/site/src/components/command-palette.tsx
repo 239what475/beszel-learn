@@ -98,8 +98,8 @@ export default function CommandPalette({ open, setOpen }: { open: boolean; setOp
 							<Trans>Settings</Trans>
 						</CommandShortcut>
 					</CommandItem>
-					//暂时存放模型路由跳转，这个路由不大熟悉，思考怎么改
-					<CommandItem
+					//此页面为设置页面
+					{/* <CommandItem
 						keywords={["model"]}
 						onSelect={() => {
 							navigate("/model")
@@ -110,7 +110,7 @@ export default function CommandPalette({ open, setOpen }: { open: boolean; setOp
 						<span>
 							<Trans>model</Trans>
 						</span>						
-					</CommandItem>
+					</CommandItem> */}
 					<CommandItem
 						keywords={["alerts"]}
 						onSelect={() => {
