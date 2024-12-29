@@ -1,16 +1,26 @@
-import React, { useState, useEffect } from'react';
+import { useState, useEffect } from'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid } from'recharts';
 import io from'socket.io-client';
-import './styles.css'; // 用于添加自定义样式
+import { Input } from 'antd';
+import { Button, Flex } from 'antd';
+import './styles.css';
+import React from'react';
 
 const socket = io('http://localhost:3000');
 
 const ChartPage = ({ open, setOpen }: { open: boolean; setOpen: (open: boolean) => void }) => {
     const [inputValue, setInputValue] = useState('');
-    const [chartData, setChartData] = useState<number[]>([10, 20, 30, 40, 50]); // 添加模拟数据
+    const [chartData, setChartData] = useState<number[]>([10, 20, 30, 40, 50]);
+    const { TextArea } = Input;
+    const textareaRef = React.useRef<HTMLDivElement>(null);
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setInputValue(e.target.value);
+    useEffect(() => {
+        const el2 = textareaRef.current;
+        console.log(el2);
+    }, []);
+
+    const clearall = () => {
+        setInputValue('');
     };
 
     const handleSubmit = () => {
@@ -31,7 +41,7 @@ const ChartPage = ({ open, setOpen }: { open: boolean; setOpen: (open: boolean) 
         const down = (e: KeyboardEvent) => {
             if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
                 e.preventDefault();
-                setOpen(false); // 切换页面时关闭当前页面
+                setOpen(false);
             }
         };
         document.addEventListener('keydown', down);
@@ -45,8 +55,16 @@ const ChartPage = ({ open, setOpen }: { open: boolean; setOpen: (open: boolean) 
     return (
         <div className="chart-page-container">
             <div>
-                <input type="text" value={inputValue} onChange={handleInputChange} />
-                <button onClick={handleSubmit}>提交</button>
+                <TextArea
+                    ref={textareaRef}
+                    rows={4}
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                />
+                <Flex gap="small" wrap>
+                    <Button onClick={() => handleSubmit()}>提交</Button>
+                    <Button onClick={() => clearall()}>清空</Button>
+                </Flex>
             </div>
             <div style={{ width: '500px', height: '400px' }}>
                 <LineChart width={500} height={400} data={chartData.map((_, i) => ({ index: i, value: _ }))}>

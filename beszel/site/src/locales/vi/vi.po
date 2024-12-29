@@ -131,7 +131,7 @@ msgid "Average utilization of {0}"
 msgstr ""
 
 #: src/components/command-palette.tsx:183
-#: src/components/navbar.tsx:106
+#: src/components/navbar.tsx:96
 msgid "Backups"
 msgstr "Sao lưu"
 
@@ -406,7 +406,7 @@ msgstr "Ngôn ngữ"
 msgid "Light"
 msgstr "Sáng"
 
-#: src/components/navbar.tsx:117
+#: src/components/navbar.tsx:107
 msgid "Log Out"
 msgstr "Đăng xuất"
 
@@ -420,7 +420,7 @@ msgid "Login attempt failed"
 msgstr "Nỗ lực đăng nhập thất bại"
 
 #: src/components/command-palette.tsx:169
-#: src/components/navbar.tsx:98
+#: src/components/navbar.tsx:88
 msgid "Logs"
 msgstr "Nhật ký"
 
@@ -645,11 +645,11 @@ msgstr "Cài đặt"
 msgid "Settings saved"
 msgstr "Cài đặt đã được lưu"
 
-#: src/components/navbar.tsx:162
+#: src/components/navbar.tsx:152
 msgid "Show Chart"
 msgstr ""
 
-#: src/components/navbar.tsx:176
+#: src/components/navbar.tsx:166
 msgid "Show Command"
 msgstr ""
 
@@ -680,7 +680,7 @@ msgstr "Sử dụng Hoán đổi"
 msgid "System"
 msgstr "Hệ thống"
 
-#: src/components/navbar.tsx:90
+#: src/components/navbar.tsx:80
 msgid "Systems"
 msgstr "Các hệ thống"
 
@@ -791,7 +791,7 @@ msgid "Used"
 msgstr "Đã sử dụng"
 
 #: src/components/command-palette.tsx:155
-#: src/components/navbar.tsx:82
+#: src/components/navbar.tsx:72
 msgid "Users"
 msgstr "Người dùng"
 

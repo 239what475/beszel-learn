@@ -131,7 +131,7 @@ msgid "Average utilization of {0}"
 msgstr ""
 
 #: src/components/command-palette.tsx:183
-#: src/components/navbar.tsx:106
+#: src/components/navbar.tsx:96
 msgid "Backups"
 msgstr "備份"
 
@@ -406,7 +406,7 @@ msgstr "語言"
 msgid "Light"
 msgstr "淺色"
 
-#: src/components/navbar.tsx:117
+#: src/components/navbar.tsx:107
 msgid "Log Out"
 msgstr "登出"
 
@@ -420,7 +420,7 @@ msgid "Login attempt failed"
 msgstr "登錄嘗試失敗"
 
 #: src/components/command-palette.tsx:169
-#: src/components/navbar.tsx:98
+#: src/components/navbar.tsx:88
 msgid "Logs"
 msgstr "日誌"
 
@@ -645,11 +645,11 @@ msgstr "設置"
 msgid "Settings saved"
 msgstr "設置已保存"
 
-#: src/components/navbar.tsx:162
+#: src/components/navbar.tsx:152
 msgid "Show Chart"
 msgstr ""
 
-#: src/components/navbar.tsx:176
+#: src/components/navbar.tsx:166
 msgid "Show Command"
 msgstr ""
 
@@ -680,7 +680,7 @@ msgstr "交換使用"
 msgid "System"
 msgstr "系統"
 
-#: src/components/navbar.tsx:90
+#: src/components/navbar.tsx:80
 msgid "Systems"
 msgstr "系統"
 
@@ -791,7 +791,7 @@ msgid "Used"
 msgstr "已用"
 
 #: src/components/command-palette.tsx:155
-#: src/components/navbar.tsx:82
+#: src/components/navbar.tsx:72
 msgid "Users"
 msgstr "用戶"
 
