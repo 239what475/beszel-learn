@@ -1,45 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Modal } from 'antd';
 import { Flex } from 'antd';
 import { Select } from 'antd';
 import { Form } from 'antd';
-import styles from './index.less';
-
-interface PriceInputProps {
-  value?: string;
-  onChange?: (value: string) => void;
-  disabled?: boolean;
-}
+import { Input } from 'antd';
+import PriceInput from '../ui/IpInput';
 
 export default function controldialog() {
-  const value = '0.0.0.0'
-  const disabled = false
-
-  const [numberArr, setNumberArr] = useState<string[]>(value?.split('.') || []);
-
-  const triggerChange = (changedValue: string) => {
-    onChange?.(changedValue);
-  };
-
-  const onNumberChange = (evalue: string, type: number) => {
-    const copy = [...numberArr];
-    copy[type] = evalue;
-    setNumberArr(copy);
-    triggerChange(copy.join('.'));
-  };
-
+  const [form] = Form.useForm();
   const [iscontrolModalOpen, setcontrolModalOpen] = useState(false);
+  const [shouldShowsocket_blockorder, setshouldShowsocket_blockorder] = useState(false); //
+
   function uploadorder() {
-    return
+    return;
   }
-  const uploadflags = false  //控制上传按钮是否禁用
+
+  const uploadflags = false;
+
   const onChange = (value: string) => {
     console.log(`selected ${value}`);
+    setshouldShowsocket_blockorder(value === 'socket_block');
+    console.log(form.getFieldValue("IPaddr"))
+    console.log(form.getFieldValue("seconds"))
   };
 
   const onSearch = (value: string) => {
     console.log('search:', value);
   };
+
   const showModal = () => {
     setcontrolModalOpen(true);
   };
@@ -51,22 +39,30 @@ export default function controldialog() {
   const handlecontrolCancel = () => {
     setcontrolModalOpen(false);
   };
+
+  useEffect(() => {
+    // 当 shouldShowPriceInput 状态变化时，会触发重新渲染
+  }, [shouldShowsocket_blockorder]);
+
   return (
     <>
       <Button type="primary" onClick={showModal}>
         命令控制
       </Button>
       <Modal title="命令控制面板" open={iscontrolModalOpen} onOk={handlecontrol} onCancel={handlecontrolCancel} footer={null}>
-        <Flex align="start" justify="space-around" >
+        <Flex>
           <Form
+            form={form}
+            initialValues={{
+              ip: '',
+              time:'',
+            }}
+            onFinish={uploadorder}
             name="命令控制表单"
             layout="horizontal"
-            labelCol={{ span: 4 }}
-            wrapperCol={{ span: 20 }}
           >
-            <Form.Item label="命令" name="order" rules={[{ required: true }]}>
+            <Form.Item label="命令" name="baseorder" rules={[{ required: true }]} style={{ display: 'inline-block', width: '60%' }} >
               <Select
-                style={{ width: 300 }}
                 showSearch
                 placeholder="请选择一个命令"
                 optionFilterProp="label"
@@ -92,61 +88,21 @@ export default function controldialog() {
                 ]}
               />
             </Form.Item>
-            <Form.Item>
+            <Form.Item style={{ display: 'inline-block', width: '20%', marginLeft: '10%'}}>
               <Button onClick={() => uploadorder()} disabled={uploadflags}>
                 执行命令
               </Button>
             </Form.Item>
-            <Form.Item>
-              <Input.Group compact className={!disabled ? styles.inputGroup : styles.inputGroup_disable}>
-                <InputNumber
-                  style={{ width: '24%' }}
-                  disabled={disabled}
-                  controls={false}
-                  value={numberArr[0]}
-                  className={styles.self_input}
-                  onChange={(e) => onNumberChange(e, 0)}
-                  min={'0'}
-                  max={'255'}
-                />
-                <span className={styles.dot} />
-                <InputNumber
-                  type={'number'}
-                  style={{ width: '24%' }}
-                  disabled={disabled}
-                  controls={false}
-                  value={numberArr[1]}
-                  className={styles.self_input}
-                  onChange={(e) => onNumberChange(e, 1)}
-                  min={'0'}
-                  max={'255'}
-                />
-                <span className={styles.dot} />
-                <InputNumber
-                  type={'number'}
-                  style={{ width: '24%' }}
-                  disabled={disabled}
-                  controls={false}
-                  value={numberArr[2]}
-                  className={styles.self_input}
-                  onChange={(e) => onNumberChange(e, 2)}
-                  min={'0'}
-                  max={'255'}
-                />
-                <span className={styles.dot} />
-                <InputNumber
-                  type={'number'}
-                  style={{ width: '24%' }}
-                  disabled={disabled}
-                  controls={false}
-                  value={numberArr[3]}
-                  className={styles.self_input}
-                  onChange={(e) => onNumberChange(e, 3)}
-                  min={'0'}
-                  max={'255'}
-                />
-              </Input.Group>
-            </Form.Item>
+            {shouldShowsocket_blockorder && (
+              <>
+                <Form.Item layout="horizontal" name="IPaddr" labelCol={{ span: 4 }} wrapperCol={{ span: 16 }} label="网络地址：" rules={[{ required: true, message: '请输入IP地址' }]}>
+                  <PriceInput />
+                </Form.Item>
+                <Form.Item layout="horizontal" name="seconds" labelCol={{ span: 4 }} wrapperCol={{ span: 16 }} label="时间（秒）：" rules={[{ required: true, message: '请输入时间' }]}>
+                  <Input prefix="seconds" suffix="秒" type = "number" />
+                </Form.Item>
+              </>
+            )}
           </Form>
         </Flex>
       </Modal>
