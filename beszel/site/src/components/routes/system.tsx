@@ -17,7 +17,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { timeTicks } from "d3-time"
 import { Plural, Trans, t } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
-
+import Controldialog  from "./control_dialog"
 const AreaChartDefault = lazy(() => import("../charts/area-chart"))
 const ContainerChart = lazy(() => import("../charts/container-chart"))
 const MemChart = lazy(() => import("../charts/mem-chart"))
@@ -303,6 +303,8 @@ export default function SystemDetail({ name }: { name: string }) {
 					<div className="grid xl:flex gap-4 px-4 sm:px-6 pt-3 sm:pt-4 pb-5">
 						<div>
 							<h1 className="text-[1.6rem] font-semibold mb-1.5">{system.name}</h1>
+							<Controldialog>	
+							</Controldialog>
 							<div className="flex flex-wrap items-center gap-3 gap-y-2 text-sm opacity-90">
 								<div className="capitalize flex gap-2 items-center">
 									<span className={cn("relative flex h-3 w-3")}>

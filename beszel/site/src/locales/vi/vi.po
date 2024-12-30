@@ -106,11 +106,11 @@ msgstr "Bạn có chắc chắn muốn xóa {name} không?"
 msgid "Automatic copy requires a secure context."
 msgstr "Sao chép tự động yêu cầu một ngữ cảnh an toàn."
 
-#: src/components/routes/system.tsx:625
+#: src/components/routes/system.tsx:627
 msgid "Average"
 msgstr "Trung bình"
 
-#: src/components/routes/system.tsx:396
+#: src/components/routes/system.tsx:398
 msgid "Average CPU utilization of containers"
 msgstr "Sử dụng CPU trung bình của các container"
 
@@ -118,24 +118,24 @@ msgstr "Sử dụng CPU trung bình của các container"
 msgid "Average exceeds <0>{value}{0}</0>"
 msgstr "Trung bình vượt quá <0>{value}{0}</0>"
 
-#: src/components/routes/system.tsx:497
+#: src/components/routes/system.tsx:499
 msgid "Average power consumption of GPUs"
 msgstr ""
 
-#: src/components/routes/system.tsx:385
+#: src/components/routes/system.tsx:387
 msgid "Average system-wide CPU utilization"
 msgstr "Sử dụng CPU trung bình toàn hệ thống"
 
-#: src/components/routes/system.tsx:515
+#: src/components/routes/system.tsx:517
 msgid "Average utilization of {0}"
 msgstr ""
 
 #: src/components/command-palette.tsx:183
-#: src/components/navbar.tsx:96
+#: src/components/navbar.tsx:93
 msgid "Backups"
 msgstr "Sao lưu"
 
-#: src/components/routes/system.tsx:441
+#: src/components/routes/system.tsx:443
 #: src/lib/utils.ts:307
 msgid "Bandwidth"
 msgstr "Băng thông"
@@ -236,7 +236,7 @@ msgid "CPU"
 msgstr "CPU"
 
 #: src/components/charts/area-chart.tsx:56
-#: src/components/routes/system.tsx:384
+#: src/components/routes/system.tsx:386
 #: src/lib/utils.ts:289
 msgid "CPU Usage"
 msgstr "Sử dụng CPU"
@@ -267,29 +267,29 @@ msgstr "Xóa"
 msgid "Disk"
 msgstr "Đĩa"
 
-#: src/components/routes/system.tsx:431
+#: src/components/routes/system.tsx:433
 msgid "Disk I/O"
 msgstr "Đĩa I/O"
 
 #: src/components/charts/disk-chart.tsx:79
-#: src/components/routes/system.tsx:424
+#: src/components/routes/system.tsx:426
 #: src/lib/utils.ts:301
 msgid "Disk Usage"
 msgstr "Sử dụng Đĩa"
 
-#: src/components/routes/system.tsx:552
+#: src/components/routes/system.tsx:554
 msgid "Disk usage of {extraFsName}"
 msgstr "Sử dụng đĩa của {extraFsName}"
 
-#: src/components/routes/system.tsx:395
+#: src/components/routes/system.tsx:397
 msgid "Docker CPU Usage"
 msgstr "Sử dụng CPU Docker"
 
-#: src/components/routes/system.tsx:416
+#: src/components/routes/system.tsx:418
 msgid "Docker Memory Usage"
 msgstr "Sử dụng Bộ nhớ Docker"
 
-#: src/components/routes/system.tsx:457
+#: src/components/routes/system.tsx:459
 msgid "Docker Network I/O"
 msgstr "Mạng I/O Docker"
 
@@ -357,7 +357,7 @@ msgstr "Gửi thông báo thử nghiệm thất bại"
 msgid "Failed to update alert"
 msgstr "Cập nhật cảnh báo thất bại"
 
-#: src/components/routes/system.tsx:596
+#: src/components/routes/system.tsx:598
 #: src/components/systems-table/systems-table.tsx:324
 msgid "Filter..."
 msgstr "Lọc..."
@@ -376,7 +376,7 @@ msgstr "Quên mật khẩu?"
 msgid "General"
 msgstr "Chung"
 
-#: src/components/routes/system.tsx:496
+#: src/components/routes/system.tsx:498
 msgid "GPU Power Draw"
 msgstr ""
 
@@ -406,7 +406,7 @@ msgstr "Ngôn ngữ"
 msgid "Light"
 msgstr "Sáng"
 
-#: src/components/navbar.tsx:107
+#: src/components/navbar.tsx:104
 msgid "Log Out"
 msgstr "Đăng xuất"
 
@@ -420,7 +420,7 @@ msgid "Login attempt failed"
 msgstr "Nỗ lực đăng nhập thất bại"
 
 #: src/components/command-palette.tsx:169
-#: src/components/navbar.tsx:88
+#: src/components/navbar.tsx:85
 msgid "Logs"
 msgstr "Nhật ký"
 
@@ -433,7 +433,7 @@ msgid "Manage display and notification preferences."
 msgstr "Quản lý tùy chọn hiển thị và thông báo."
 
 #. Chart select field. Please try to keep this short.
-#: src/components/routes/system.tsx:628
+#: src/components/routes/system.tsx:630
 msgid "Max 1 min"
 msgstr "Tối đa 1 phút"
 
@@ -441,12 +441,12 @@ msgstr "Tối đa 1 phút"
 msgid "Memory"
 msgstr "Bộ nhớ"
 
-#: src/components/routes/system.tsx:406
+#: src/components/routes/system.tsx:408
 #: src/lib/utils.ts:295
 msgid "Memory Usage"
 msgstr "Sử dụng Bộ nhớ"
 
-#: src/components/routes/system.tsx:417
+#: src/components/routes/system.tsx:419
 msgid "Memory usage of docker containers"
 msgstr "Sử dụng bộ nhớ của các container Docker"
 
@@ -462,11 +462,11 @@ msgstr "Tên"
 msgid "Net"
 msgstr "Mạng"
 
-#: src/components/routes/system.tsx:458
+#: src/components/routes/system.tsx:460
 msgid "Network traffic of docker containers"
 msgstr "Lưu lượng mạng của các container Docker"
 
-#: src/components/routes/system.tsx:443
+#: src/components/routes/system.tsx:445
 msgid "Network traffic of public interfaces"
 msgstr "Lưu lượng mạng của các giao diện công cộng"
 
@@ -566,8 +566,8 @@ msgstr "Vui lòng đăng nhập vào tài khoản của bạn"
 msgid "Port"
 msgstr "Cổng"
 
-#: src/components/routes/system.tsx:407
-#: src/components/routes/system.tsx:523
+#: src/components/routes/system.tsx:409
+#: src/components/routes/system.tsx:525
 msgid "Precise utilization at the recorded time"
 msgstr "Sử dụng chính xác tại thời điểm ghi nhận"
 
@@ -608,9 +608,9 @@ msgstr "Lưu địa chỉ bằng cách sử dụng phím enter hoặc dấu ph�
 msgid "Save Settings"
 msgstr "Lưu Cài đặt"
 
-#: src/components/navbar.tsx:146
-#~ msgid "Search"
-#~ msgstr "Tìm kiếm"
+#: src/components/navbar.tsx:133
+msgid "Search"
+msgstr "Tìm kiếm"
 
 #: src/components/command-palette.tsx:46
 msgid "Search for systems or settings..."
@@ -646,12 +646,12 @@ msgid "Settings saved"
 msgstr "Cài đặt đã được lưu"
 
 #: src/components/navbar.tsx:152
-msgid "Show Chart"
-msgstr ""
+#~ msgid "Show Chart"
+#~ msgstr ""
 
 #: src/components/navbar.tsx:166
-msgid "Show Command"
-msgstr ""
+#~ msgid "Show Command"
+#~ msgstr ""
 
 #: src/components/login/auth-form.tsx:191
 msgid "Sign in"
@@ -665,11 +665,11 @@ msgstr "Cài đặt SMTP"
 msgid "Status"
 msgstr "Trạng thái"
 
-#: src/components/routes/system.tsx:473
+#: src/components/routes/system.tsx:475
 msgid "Swap space used by the system"
 msgstr "Không gian hoán đổi được sử dụng bởi hệ thống"
 
-#: src/components/routes/system.tsx:472
+#: src/components/routes/system.tsx:474
 msgid "Swap Usage"
 msgstr "Sử dụng Hoán đổi"
 
@@ -680,7 +680,7 @@ msgstr "Sử dụng Hoán đổi"
 msgid "System"
 msgstr "Hệ thống"
 
-#: src/components/navbar.tsx:80
+#: src/components/navbar.tsx:77
 msgid "Systems"
 msgstr "Các hệ thống"
 
@@ -688,12 +688,12 @@ msgstr "Các hệ thống"
 msgid "Systems may be managed in a <0>config.yml</0> file inside your data directory."
 msgstr "Các hệ thống có thể được quản lý trong tệp <0>config.yml</0> bên trong thư mục dữ liệu của bạn."
 
-#: src/components/routes/system.tsx:484
+#: src/components/routes/system.tsx:486
 #: src/lib/utils.ts:314
 msgid "Temperature"
 msgstr "Nhiệt độ"
 
-#: src/components/routes/system.tsx:485
+#: src/components/routes/system.tsx:487
 msgid "Temperatures of system sensors"
 msgstr "Nhiệt độ của các cảm biến hệ thống"
 
@@ -721,11 +721,11 @@ msgstr "Sau đó đăng nhập vào backend và đặt lại mật khẩu tài k
 msgid "This action cannot be undone. This will permanently delete all current records for {name} from the database."
 msgstr "Hành động này không thể hoàn tác. Điều này sẽ xóa vĩnh viễn tất cả các bản ghi hiện tại cho {name} khỏi cơ sở dữ liệu."
 
-#: src/components/routes/system.tsx:564
+#: src/components/routes/system.tsx:566
 msgid "Throughput of {extraFsName}"
 msgstr "Thông lượng của {extraFsName}"
 
-#: src/components/routes/system.tsx:432
+#: src/components/routes/system.tsx:434
 msgid "Throughput of root filesystem"
 msgstr "Thông lượng của hệ thống tệp gốc"
 
@@ -733,8 +733,8 @@ msgstr "Thông lượng của hệ thống tệp gốc"
 msgid "To email(s)"
 msgstr "Đến email(s)"
 
-#: src/components/routes/system.tsx:359
-#: src/components/routes/system.tsx:372
+#: src/components/routes/system.tsx:361
+#: src/components/routes/system.tsx:374
 msgid "Toggle grid"
 msgstr "Chuyển đổi lưới"
 
@@ -775,12 +775,12 @@ msgid "Uptime"
 msgstr "Thời gian hoạt động"
 
 #: src/components/charts/area-chart.tsx:73
-#: src/components/routes/system.tsx:514
-#: src/components/routes/system.tsx:551
+#: src/components/routes/system.tsx:516
+#: src/components/routes/system.tsx:553
 msgid "Usage"
 msgstr "Sử dụng"
 
-#: src/components/routes/system.tsx:424
+#: src/components/routes/system.tsx:426
 msgid "Usage of root partition"
 msgstr "Sử dụng phân vùng gốc"
 
@@ -791,11 +791,11 @@ msgid "Used"
 msgstr "Đã sử dụng"
 
 #: src/components/command-palette.tsx:155
-#: src/components/navbar.tsx:72
+#: src/components/navbar.tsx:69
 msgid "Users"
 msgstr "Người dùng"
 
-#: src/components/routes/system.tsx:662
+#: src/components/routes/system.tsx:664
 msgid "Waiting for enough records to display"
 msgstr "Đang chờ đủ bản ghi để hiển thị"
 
