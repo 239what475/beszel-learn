@@ -17,7 +17,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { timeTicks } from "d3-time"
 import { Plural, Trans, t } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
-import Controldialog  from "./control_dialog"
+import Controldialog  from "./center_page"
 const AreaChartDefault = lazy(() => import("../charts/area-chart"))
 const ContainerChart = lazy(() => import("../charts/container-chart"))
 const MemChart = lazy(() => import("../charts/mem-chart"))
