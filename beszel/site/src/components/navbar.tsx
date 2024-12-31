@@ -1,5 +1,4 @@
-// top-bar
-import { useState, lazy, useEffect } from "react"
+import { useState, lazy, Suspense } from "react"
 import { Button, buttonVariants } from "@/components/ui/button"
 import {
 	DatabaseBackupIcon,
@@ -28,8 +27,6 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { AddSystemButton } from "./add-system"
 import { Trans } from "@lingui/macro"
-import ChartPage from "./RealTimeChartPage"
-import { createPortal } from "react-dom"
 
 const CommandPalette = lazy(() => import("./command-palette"))
 
@@ -116,63 +113,33 @@ export default function Navbar() {
 }
 
 function SearchButton() {
-    const [chartOpen, setChartOpen] = useState(false);
-    const [commandOpen, setCommandOpen] = useState(false);
+	const [open, setOpen] = useState(false)
 
-    const Kbd = ({ children }: { children: React.ReactNode }) => (
-        <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
-            {children}
-        </kbd>
-    );
+	const Kbd = ({ children }: { children: React.ReactNode }) => (
+		<kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
+			{children}
+		</kbd>
+	)
 
-    useEffect(() => {
-        const down = (e: KeyboardEvent) => {
-            if (e.key === "j" && (e.metaKey || e.ctrlKey)) {
-                e.preventDefault();
-                setChartOpen(!chartOpen);
-            }
-            if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-                e.preventDefault();
-                setCommandOpen(!commandOpen);
-            }
-        };
-        document.addEventListener('keydown', down);
-        return () => document.removeEventListener('keydown', down);
-    }, [chartOpen, commandOpen]);
-
-    return (
-        <>
-            <Button
-                variant="outline"
-                className="block text-sm text-muted-foreground px-4"
-                onClick={() => setChartOpen(true)}
-            >
-                <span className="flex items-center">
-                    <SearchIcon className="me-1.5 h-4 w-4" />
-                    <Trans>Show Chart</Trans>
-                    <span className="flex items-center ms-3.5">
-                        <Kbd>{isMac? "⌘" : "Ctrl"}</Kbd>
-                        <Kbd>J</Kbd>
-                    </span>
-                </span>
-            </Button>
-            <Button
-                variant="outline"
-                className="block text-sm text-muted-foreground px-4"
-                onClick={() => setCommandOpen(true)}
-            >
-                <span className="flex items-center">
-                    <SearchIcon className="me-1.5 h-4 w-4" />
-                    <Trans>Show Command</Trans>
-                    <span className="flex items-center ms-3.5">
-                        <Kbd>{isMac? "⌘" : "Ctrl"}</Kbd>
-                        <Kbd>K</Kbd>
-                    </span>
-                </span>
-            </Button>
-            {chartOpen && createPortal(<ChartPage open={chartOpen} setOpen={setChartOpen} />, document.body)}
-            {commandOpen && createPortal(<CommandPalette open={commandOpen} setOpen={setCommandOpen} />, document.body)}
-        </>
-    );
+	return (
+		<>
+			<Button
+				variant="outline"
+				className="hidden md:block text-sm text-muted-foreground px-4"
+				onClick={() => setOpen(true)}
+			>
+				<span className="flex items-center">
+					<SearchIcon className="me-1.5 h-4 w-4" />
+					<Trans>Search</Trans>
+					<span className="flex items-center ms-3.5">
+						<Kbd>{isMac ? "⌘" : "Ctrl"}</Kbd>
+						<Kbd>K</Kbd>
+					</span>
+				</span>
+			</Button>
+			<Suspense>
+				<CommandPalette open={open} setOpen={setOpen} />
+			</Suspense>
+		</>
+	)
 }
-
