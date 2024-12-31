@@ -29,12 +29,7 @@ func start_ebpf_task(config *ssh.ClientConfig, c Command, callback Callback) {
 	// 向agent发送指令
 	go get_ebpf_data(ebpfclient, c, receiver)
 
-	// 处理结果
-	if c.background {
-		go handle_receiver(logFile, receiver, callback)
-	} else {
-		handle_receiver(logFile, receiver, callback)
-	}
+	handle_receiver(logFile, receiver, callback)
 }
 
 // 向agent发送ebpf任务,并接收结果,将结果发送到receiver中进行处理
