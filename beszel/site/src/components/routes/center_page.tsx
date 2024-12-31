@@ -50,8 +50,7 @@ export default function controldialog() {
                 onOk={handlecontrol}
                 onCancel={handlecontrolCancel}
                 footer={null}
-                width="80%"
-                height="80%"
+                width={1500}
             >
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                     {Object.entries(components).map(([componentName, flag], index) => {

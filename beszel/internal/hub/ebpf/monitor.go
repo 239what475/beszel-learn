@@ -108,7 +108,7 @@ func get_input_commands(reader *bufio.Reader) (Command, error) {
 		background = false
 	}
 
-	ip := "192.168.23.128"
+	ip := "192.168.23.131"
 
 	return Command{command, subcommand, timeout, background, ip}, nil
 }
