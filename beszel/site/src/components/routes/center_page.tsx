@@ -1,29 +1,44 @@
 import React, { useState } from'react';
 import { Button, Modal } from 'antd';
 import Controldialog from './control_dialog.tsx';
-import ComponentB from './ComponentB.tsx';
-import ComponentC from './ComponentC.tsx';
+import Svgimage from './svg_picture.tsx';
+import Messagetable from './message_table.tsx';
 import ComponentD from './ComponentD.tsx';
 import ComponentE from './ComponentE.tsx';
 import ComponentF from './ComponentF.tsx';
 
-// 定义组件和对应的显示标志对象
-const componentMap = {
-    Controldialog: true,
-    ComponentB: false,
-    ComponentC: true,
-    ComponentD: false,
-    ComponentE: true,
-    ComponentF: false
-};
-
-export default function controldialog() {
+export default function MainApp() {
     const [iscontrolModalOpen, setcontrolModalOpen] = useState(false);
-    const [components, setComponents] = useState(componentMap);
+    const [components, setComponents] = useState({
+        Controldialog: true,
+        Svgimage: true,
+        Messagetable: true,
+        ComponentD: false,
+        ComponentE: true,
+        ComponentF: false
+    });
 
-    const toggleVisibility = (componentName) => {
+    const handleBaseOrderChange = (baseOrder) => {
         const newComponents = {...components };
-        newComponents[componentName] =!newComponents[componentName];
+        if (baseOrder ==='socket_block') {
+            newComponents.Svgimage = true;
+        } else if (baseOrder ==='ssh_monitor') {
+            newComponents.Messagetable = true;
+        } else if (baseOrder === 'opensnoop') {
+            newComponents.ComponentD = true;
+        }
+        setComponents(newComponents);
+    };
+
+    const handleHideSvgimage = () => {
+        const newComponents = {...components };
+        newComponents.Svgimage = false;
+        setComponents(newComponents);
+    };
+
+    const handleHideMessagetable = () => {
+        const newComponents = {...components };
+        newComponents.Messagetable = false;
         setComponents(newComponents);
     };
 
@@ -60,9 +75,9 @@ export default function controldialog() {
                                     key={index}
                                     style={{ width: 'calc(50% - 5px)' }}
                                 >
-                                    {componentName === "Controldialog" && <Controldialog />}
-                                    {componentName === "ComponentB" && <ComponentB />}
-                                    {componentName === "ComponentC" && <ComponentC />}
+                                    {componentName === "Controldialog" && <Controldialog onBaseOrderChange={handleBaseOrderChange} />}
+                                    {componentName === "Svgimage" && <Svgimage onHide={handleHideSvgimage}/>}
+                                    {componentName === "Messagetable" && <Messagetable onHide={handleHideMessagetable}/>}
                                     {componentName === "ComponentD" && <ComponentD />}
                                     {componentName === "ComponentE" && <ComponentE />}
                                     {componentName === "ComponentF" && <ComponentF />}

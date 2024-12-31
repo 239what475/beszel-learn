@@ -1,26 +1,29 @@
-import React, { useState, useEffect } from'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from 'antd';
 import { Select } from 'antd';
 import { Form } from 'antd';
 import { Input } from 'antd';
 import PriceInput from '../ui/IpInput';
-import io from'socket.io-client';
+import io from 'socket.io-client';
 
 const socket = io('http://your-backend-url');
 
-export default function controldialog() {
+export default function controldialog({ onBaseOrderChange }) {
     const [form] = Form.useForm();
     const [shouldShowsocket_blockorder, setshouldShowsocket_blockorder] = useState(false);
     const [shouldShowSecondsForMonitorAndSnoop, setShouldShowSecondsForMonitorAndSnoop] = useState(false);
 
     function uploadorder() {
         const baseorder = form.getFieldValue('baseorder');
-        if (baseorder ==='socket_block') {
+        if (onBaseOrderChange) {
+            onBaseOrderChange(baseorder);
+        }
+        if (baseorder === 'socket_block') {
             const ip = form.getFieldValue('IPaddr');
             const seconds = form.getFieldValue('seconds');
             const command = `get_ebpf_data socket_block,${ip} ${seconds} show`;
             socket.emit('command', command);
-        } else if (baseorder ==='ssh_monitor') {
+        } else if (baseorder === 'ssh_monitor') {
             const seconds = form.getFieldValue('seconds');
             const command = `get_ebpf_data ssh_monitor ${seconds}`;
             socket.emit('command', command);
@@ -28,7 +31,7 @@ export default function controldialog() {
             const seconds = form.getFieldValue('seconds');
             const command = `get_ebpf_data opensnoop ${seconds} show`;
             socket.emit('command', command);
-        } else if (baseorder ==='stop_ebpf_session opensnoop') {
+        } else if (baseorder === 'stop_ebpf_session opensnoop') {
             const command = `stop_ebpf_session opensnoop`;
             socket.emit('command', command);
         }
@@ -38,8 +41,8 @@ export default function controldialog() {
 
     const onChange = (value: string) => {
         console.log(`selected ${value}`);
-        setshouldShowsocket_blockorder(value ==='socket_block');
-        setShouldShowSecondsForMonitorAndSnoop(value ==='ssh_monitor' || value === 'opensnoop');
+        setshouldShowsocket_blockorder(value === 'socket_block');
+        setShouldShowSecondsForMonitorAndSnoop(value === 'ssh_monitor' || value === 'opensnoop');
     };
 
     const onSearch = (value: string) => {
