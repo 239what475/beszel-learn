@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Spin, Image, Button, Row, Col } from 'antd';
-import socketIOClient from "socket.io-client";
+import { io } from "socket.io-client";
 import { CloseOutlined } from '@ant-design/icons';
-const socket = socketIOClient('YOUR_SOCKET_SERVER_URL');
+const socket = io('http://192.168.23.131:45876');
 
 const svgimage = ({ onHide }) => {
     const [loading, setLoading] = useState(true);

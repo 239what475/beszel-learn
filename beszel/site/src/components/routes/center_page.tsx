@@ -3,19 +3,19 @@ import { Button, Modal } from 'antd';
 import Controldialog from './control_dialog.tsx';
 import Svgimage from './svg_picture.tsx';
 import Messagetable from './message_table.tsx';
-import ComponentD from './ComponentD.tsx';
-import ComponentE from './ComponentE.tsx';
-import ComponentF from './ComponentF.tsx';
+import Servermonitor from './server_monitor.tsx';
+import Systemmonitor from './system_monitor.tsx';
+import Networkmonitor from './network_monitor.tsx';
 
 export default function MainApp() {
     const [iscontrolModalOpen, setcontrolModalOpen] = useState(false);
     const [components, setComponents] = useState({
         Controldialog: true,
-        Svgimage: true,
-        Messagetable: true,
-        ComponentD: false,
-        ComponentE: true,
-        ComponentF: false
+        Svgimage: false,
+        Messagetable: false,
+        Servermonitor: true,
+        Systemmonitor: true,
+        Networkmonitor: true
     });
 
     const handleBaseOrderChange = (baseOrder) => {
@@ -25,7 +25,7 @@ export default function MainApp() {
         } else if (baseOrder ==='ssh_monitor') {
             newComponents.Messagetable = true;
         } else if (baseOrder === 'opensnoop') {
-            newComponents.ComponentD = true;
+            newComponents.Servermonitor = true;
         }
         setComponents(newComponents);
     };
@@ -41,6 +41,25 @@ export default function MainApp() {
         newComponents.Messagetable = false;
         setComponents(newComponents);
     };
+
+    const handleHideNetworkmonitor = () => {
+        const newComponents = {...components };
+        newComponents.Networkmonitor = false;
+        setComponents(newComponents);
+    };
+
+    const handleHideServermonitor = () => {
+        const newComponents = {...components };
+        newComponents.Servermonitor = false;
+        setComponents(newComponents);
+    };
+
+    const handleHideSystemmonitor = () => {
+        const newComponents = {...components };
+        newComponents.Systemmonitor = false;
+        setComponents(newComponents);
+    };
+
 
     const showModal = () => {
         setcontrolModalOpen(true);
@@ -78,9 +97,9 @@ export default function MainApp() {
                                     {componentName === "Controldialog" && <Controldialog onBaseOrderChange={handleBaseOrderChange} />}
                                     {componentName === "Svgimage" && <Svgimage onHide={handleHideSvgimage}/>}
                                     {componentName === "Messagetable" && <Messagetable onHide={handleHideMessagetable}/>}
-                                    {componentName === "ComponentD" && <ComponentD />}
-                                    {componentName === "ComponentE" && <ComponentE />}
-                                    {componentName === "ComponentF" && <ComponentF />}
+                                    {componentName === "Servermonitor" && <Servermonitor onHide={handleHideServermonitor}/>}
+                                    {componentName === "Systemmonitor" && <Systemmonitor onHide={handleHideSystemmonitor}/>}
+                                    {componentName === "Networkmonitor" && <Networkmonitor onHide={handleHideNetworkmonitor} />}
                                 </div>
                             );
                         }
