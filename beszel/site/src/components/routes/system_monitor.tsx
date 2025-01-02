@@ -7,7 +7,7 @@ import {
   Bar,
   Tooltip
 } from 'recharts';
-import { Button, Col, Row } from 'antd';
+import { Button, Col, Flex, Row } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 
 const SystemMonitor = ({ onHide }) => {
@@ -50,42 +50,54 @@ const SystemMonitor = ({ onHide }) => {
         </Col>
       </Row>
       <Row>
-      <Col span={24}><h2>CPU 使用情况</h2></Col>
+        <Col span={12}>
+          <h2>CPU 使用情况</h2>
+        </Col>
+        <Col span={12}>
+          <h2>内存监控</h2>
+        </Col>
       </Row>
-      <div style={{ height: '600px', width: '600px' }}>
-        <h3>总使用率</h3>
-        <ResponsiveContainer width="300" height="300">
-          <PieChart>
-            <Pie data={[{ value: cpuTotalUsage }]} dataKey="value" innerRadius="40%" outerRadius="80%" />
-          </PieChart>
-        </ResponsiveContainer>
-        <h3>用户态与内核态的使用比例</h3>
-        <ResponsiveContainer width="300" height="300">
-          <BarChart width={150} height={40} data={[{ user: userKernelRatio[0], kernel: userKernelRatio[1] }]}>
-            <Bar dataKey="user" fill="#4fc3f7" />
-            <Bar dataKey="kernel" fill="#e57373" />
-            <Tooltip />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
       <Row>
-      <h2>内存监控</h2>
+        <Col span={6}>
+          <h3>总使用率</h3>
+        </Col>
+        <Col span={6}>
+          <h3>用户态与内核态的使用比例</h3>
+        </Col>
+        <Col span={6}>
+          <h3>总内存使用情况</h3>
+        </Col>
+        <Col span={6}>
+          <h3>不同类型的内存分配统计</h3>
+        </Col>
       </Row>
-      <div style={{ height: '600px', width: '600px' }}>
-        <h3>总内存使用情况</h3>
-        <ResponsiveContainer width="300" height="300">
-          <PieChart width={300} height={300}>
-            <Pie data={[{ value: memoryTotalUsage }]} dataKey="value" innerRadius="40%" outerRadius="80%" />
-          </PieChart>
-        </ResponsiveContainer>
-        <h3>不同类型的内存分配统计</h3>
-        <ResponsiveContainer width="300" height="300">
-          <PieChart width={300} height={300}>
-            <Pie data={memoryTypeRatio.map((value, index) => ({ value, name: `Type${index + 1}` }))} dataKey="value" />
-            <Tooltip />
-          </PieChart>
-        </ResponsiveContainer>
-      </div>
+      <Row>
+        <div style={{ height: '300px', width: '721px', margin: 'auto', display: 'flex'}}>
+            <ResponsiveContainer width="25%" height={250}>
+              <PieChart>
+                <Pie data={[{ value: cpuTotalUsage }]} dataKey="value" innerRadius="40%" outerRadius="80%" />
+              </PieChart>
+            </ResponsiveContainer>
+            <ResponsiveContainer width="25%" height={250}>
+              <BarChart data={[{ user: userKernelRatio[0], kernel: userKernelRatio[1] }]}>
+                <Bar dataKey="user" fill="#4fc3f7" />
+                <Bar dataKey="kernel" fill="#e57373" />
+                <Tooltip />
+              </BarChart>
+            </ResponsiveContainer>
+            <ResponsiveContainer width="25%" height={250}>
+              <PieChart>
+                <Pie data={[{ value: memoryTotalUsage }]} dataKey="value" innerRadius="40%" outerRadius="80%" />
+              </PieChart>
+            </ResponsiveContainer>
+            <ResponsiveContainer width="25%" height={250}>
+              <PieChart>
+                <Pie data={memoryTypeRatio.map((value, index) => ({ value, name: `Type${index + 1}` }))} dataKey="value" />
+                <Tooltip />
+              </PieChart>
+            </ResponsiveContainer>
+        </div>
+      </Row>
     </div>
   );
 };
