@@ -84,7 +84,7 @@ export default function MainApp() {
                 onOk={handlecontrol}
                 onCancel={handlecontrolCancel}
                 footer={null}
-                width={1500}
+                width={1800}
             >
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                     {Object.entries(components).map(([componentName, flag], index) => {

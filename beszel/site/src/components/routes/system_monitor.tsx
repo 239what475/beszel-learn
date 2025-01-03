@@ -50,47 +50,47 @@ const SystemMonitor = ({ onHide }) => {
         </Col>
       </Row>
       <Row>
-        <Col span={12}>
-          <h2>CPU 使用情况</h2>
+        <Col span={12} style={{ fontSize: '24px', textAlign: 'center', lineHeight: '24px'}}>
+          CPU 使用情况
         </Col>
-        <Col span={12}>
-          <h2>内存监控</h2>
+        <Col span={12} style={{ fontSize: '24px', textAlign: 'center', lineHeight: '24px'}}>
+          内存监控
         </Col>
       </Row>
       <Row>
-        <Col span={6}>
+        <Col span={6} style={{ textAlign: 'center' }}>
           <h3>总使用率</h3>
         </Col>
-        <Col span={6}>
+        <Col span={6} style={{ textAlign: 'center' }}>
           <h3>用户态与内核态的使用比例</h3>
         </Col>
-        <Col span={6}>
+        <Col span={6} style={{ textAlign: 'center' }}>
           <h3>总内存使用情况</h3>
         </Col>
-        <Col span={6}>
+        <Col span={6} style={{ textAlign: 'center' }}>
           <h3>不同类型的内存分配统计</h3>
         </Col>
       </Row>
       <Row>
-        <div style={{ height: '300px', width: '721px', margin: 'auto', display: 'flex'}}>
-            <ResponsiveContainer width="25%" height={250}>
+        <div style={{ height: '300px', width: '850px', margin: 'auto', display: 'flex'}}>
+            <ResponsiveContainer width="25%" height={275}>
               <PieChart>
                 <Pie data={[{ value: cpuTotalUsage }]} dataKey="value" innerRadius="40%" outerRadius="80%" />
               </PieChart>
             </ResponsiveContainer>
-            <ResponsiveContainer width="25%" height={250}>
+            <ResponsiveContainer width="25%" height={275}>
               <BarChart data={[{ user: userKernelRatio[0], kernel: userKernelRatio[1] }]}>
                 <Bar dataKey="user" fill="#4fc3f7" />
                 <Bar dataKey="kernel" fill="#e57373" />
                 <Tooltip />
               </BarChart>
             </ResponsiveContainer>
-            <ResponsiveContainer width="25%" height={250}>
+            <ResponsiveContainer width="25%" height={275}>
               <PieChart>
                 <Pie data={[{ value: memoryTotalUsage }]} dataKey="value" innerRadius="40%" outerRadius="80%" />
               </PieChart>
             </ResponsiveContainer>
-            <ResponsiveContainer width="25%" height={250}>
+            <ResponsiveContainer width="25%" height={275}>
               <PieChart>
                 <Pie data={memoryTypeRatio.map((value, index) => ({ value, name: `Type${index + 1}` }))} dataKey="value" />
                 <Tooltip />

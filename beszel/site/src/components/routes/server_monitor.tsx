@@ -48,7 +48,6 @@ const ServerMonitor = ({ onHide }) => {
     return (
         <div>
             <Row>
-                <h2>服务器监控</h2>
                 <Col span={22}></Col>
                 <Col span={2}>
                     <Button
@@ -57,24 +56,37 @@ const ServerMonitor = ({ onHide }) => {
                     ></Button>
                 </Col>
             </Row>
-            <div style={{ height: '600px', width: '600px' }}>
-                <h3>统计请求响应时间</h3>
-                <ResponsiveContainer width="300" height="300">
-                    <LineChart width={300} height={300} data={responseTimes.map((time, index) => ({ x: index, y: time }))}>
+            <Row>
+                <Col span={24} style={{ fontSize: '24px', textAlign: 'center', lineHeight: '24px' }}>
+                    服务器监控
+                </Col>
+            </Row>
+            <Row>
+                <Col span={8} style={{ textAlign: 'center' }}>
+                    统计请求响应时间
+                </Col>
+                <Col span={8} style={{ textAlign: 'center' }}>
+                    每秒请求次数
+                </Col>
+                <Col span={8} style={{ textAlign: 'center' }}>
+                    并发连接数监控
+                </Col>
+            </Row>
+            <div style={{ height: '300px', width: '850px', display: 'flex'}}>
+                <ResponsiveContainer width="33%" height={275}>
+                    <LineChart data={responseTimes.map((time, index) => ({ x: index, y: time }))}>
                         <Line type="monotone" dataKey="y" stroke="#ff7f0e" />
                         <Tooltip />
                     </LineChart>
                 </ResponsiveContainer>
-                <h3>每秒请求次数</h3>
-                <ResponsiveContainer width="300" height="300">
-                    <AreaChart width={300} height={300} data={requestsPerSecond.map((req, index) => ({ x: index, y: req }))}>
+                <ResponsiveContainer width="33%" height={275}>
+                    <AreaChart data={requestsPerSecond.map((req, index) => ({ x: index, y: req }))}>
                         <Area type="monotone" dataKey="y" stroke="#1f77b4" fill="#1f77b4" opacity={0.3} />
                         <Tooltip />
                     </AreaChart>
                 </ResponsiveContainer>
-                <h3>并发连接数监控</h3>
-                <ResponsiveContainer width="300" height="300">
-                    <BarChart width={300} height={300} data={concurrentConnections.newConn.map((newConn, index) => ({
+                <ResponsiveContainer width="33%" height={275}>
+                    <BarChart data={concurrentConnections.newConn.map((newConn, index) => ({
                         x: index,
                         newConn,
                         activeConn: concurrentConnections.activeConn[index],
