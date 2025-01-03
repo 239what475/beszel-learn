@@ -237,7 +237,7 @@ export default function SystemDetail({ name }: { name: string }) {
 		setContainerData(containerData)
 	}, [])
 
-	// values for system info bar
+	// values for system info bar 传参
 	const systemInfo = useMemo(() => {
 		if (!system.info) {
 			return []
@@ -273,6 +273,11 @@ export default function SystemDetail({ name }: { name: string }) {
 		}[]
 	}, [system.info])
 
+	//传递systemIP给Controlpage子组件
+	const systemIP = useMemo(() => {
+        return system && system.host;
+    }, [system]);
+
 	/** Space for tooltip if more than 12 containers */
 	useEffect(() => {
 		if (!netCardRef.current || !containerData.length) {
@@ -303,7 +308,7 @@ export default function SystemDetail({ name }: { name: string }) {
 					<div className="grid xl:flex gap-4 px-4 sm:px-6 pt-3 sm:pt-4 pb-5">
 						<div>
 							<h1 className="text-[1.6rem] font-semibold mb-1.5">{system.name}</h1>
-							<Controlpage>	
+							<Controlpage systemIP={systemIP}>	
 							</Controlpage>
 							<div className="flex flex-wrap items-center gap-3 gap-y-2 text-sm opacity-90">
 								<div className="capitalize flex gap-2 items-center">

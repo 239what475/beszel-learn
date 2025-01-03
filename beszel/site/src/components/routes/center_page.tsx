@@ -7,15 +7,16 @@ import Servermonitor from './server_monitor.tsx';
 import Systemmonitor from './system_monitor.tsx';
 import Networkmonitor from './network_monitor.tsx';
 
-export default function MainApp() {
+const Controlpage = ({ systemIP }) => {
+    console.log(systemIP)
     const [iscontrolModalOpen, setcontrolModalOpen] = useState(false);
     const [components, setComponents] = useState({
         Controldialog: true,
         Svgimage: false,
         Messagetable: false,
-        Servermonitor: true,
-        Systemmonitor: true,
-        Networkmonitor: true
+        Servermonitor: false,
+        Systemmonitor: false,
+        Networkmonitor: false
     });
 
     const handleBaseOrderChange = (baseOrder) => {
@@ -94,7 +95,7 @@ export default function MainApp() {
                                     key={index}
                                     style={{ width: 'calc(50% - 5px)' }}
                                 >
-                                    {componentName === "Controldialog" && <Controldialog onBaseOrderChange={handleBaseOrderChange} />}
+                                    {componentName === "Controldialog" && <Controldialog onBaseOrderChange={handleBaseOrderChange} systemIP={systemIP} />}
                                     {componentName === "Svgimage" && <Svgimage onHide={handleHideSvgimage}/>}
                                     {componentName === "Messagetable" && <Messagetable onHide={handleHideMessagetable}/>}
                                     {componentName === "Servermonitor" && <Servermonitor onHide={handleHideServermonitor}/>}
@@ -110,3 +111,5 @@ export default function MainApp() {
         </>
     );
 }
+
+export default Controlpage

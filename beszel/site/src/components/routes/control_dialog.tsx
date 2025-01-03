@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from 'antd';
 import { Select } from 'antd';
 import { Form } from 'antd';
 import { Input } from 'antd';
 import PriceInput from '../ui/IpInput';
-import io from'socket.io-client';
+import io from 'socket.io-client';
 
 const socket = io('http://192.168.23.131:45876');
 
-export default function controldialog({ onBaseOrderChange }) {
+export default function controldialog({ onBaseOrderChange, systemIP }) {
     const [form] = Form.useForm();
     const [shouldShowsocket_blockorder, setshouldShowsocket_blockorder] = useState(false);
     const [shouldShowSecondsForMonitorAndSnoop, setShouldShowSecondsForMonitorAndSnoop] = useState(false);
@@ -23,17 +23,17 @@ export default function controldialog({ onBaseOrderChange }) {
         if (baseorder === 'socket_block') {
             const ip = form.getFieldValue('IPaddr');
             const seconds = form.getFieldValue('seconds');
-            command = `get_ebpf_data socket_block,${ip} ${seconds} show`;
+            command = `${systemIP} get_ebpf_data socket_block ${ip} ${seconds} show`;
         } else if (baseorder === 'ssh_monitor') {
             const seconds = form.getFieldValue('seconds');
-            command = `get_ebpf_data ssh_monitor ${seconds}`;
+            command = `${systemIP} get_ebpf_data ssh_monitor ${seconds}`;
         } else if (baseorder === 'opensnoop') {
             const seconds = form.getFieldValue('seconds');
-            command = `get_ebpf_data opensnoop ${seconds} show`;
+            command = `${systemIP} get_ebpf_data opensnoop ${seconds} show`;
         } else if (baseorder === 'stop_ebpf_session opensnoop') {
-            command = `stop_ebpf_session opensnoop`;
+            command = `${systemIP} stop_ebpf_session opensnoop`;
         }
-
+        console.log(command)
         socket.emit('command', command);
     }
 
