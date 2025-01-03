@@ -6,7 +6,6 @@ import Messagetable from './message_table.tsx';
 import Servermonitor from './server_monitor.tsx';
 import Systemmonitor from './system_monitor.tsx';
 import Networkmonitor from './network_monitor.tsx';
-
 const Controlpage = ({ systemIP }) => {
     console.log(systemIP)
     const [iscontrolModalOpen, setcontrolModalOpen] = useState(false);
@@ -14,9 +13,9 @@ const Controlpage = ({ systemIP }) => {
         Controldialog: true,
         Svgimage: false,
         Messagetable: false,
-        Servermonitor: false,
-        Systemmonitor: false,
-        Networkmonitor: false
+        Servermonitor: true,
+        Systemmonitor: true,
+        Networkmonitor: true
     });
 
     const handleBaseOrderChange = (baseOrder) => {
