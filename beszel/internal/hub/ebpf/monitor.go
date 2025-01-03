@@ -23,6 +23,10 @@ var upgrader = websocket.Upgrader{
 func Start_ebpf_monitor(sshClientConfig *ssh.ClientConfig, se *core.ServeEvent) error {
 	go func() {
 		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Set("Access-Control-Allow-Origin", "*") // 同样，*代表允许所有来源
+			w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+			w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+
 			// 升级HTTP连接为WebSocket连接
 			conn, err := upgrader.Upgrade(w, r, nil)
 			if err != nil {
