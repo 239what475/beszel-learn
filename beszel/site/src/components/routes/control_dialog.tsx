@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from'react';
 import { Button } from 'antd';
 import { Select } from 'antd';
 import { Form } from 'antd';
 import { Input } from 'antd';
 import PriceInput from '../ui/IpInput';
-import io from 'socket.io-client';
 
-const socket = io('http://192.168.23.131:45876');
+
+const socket = new WebSocket("ws://localhost:12345/ws");
 
 export default function controldialog({ onBaseOrderChange, systemIP }) {
+    const handleResponse = (response: string) => {
+        //获得服务器回复，该部分代码未运行
+        console.log('Server response:', response);
+        setServerResponse(response);
+    };
     const [form] = Form.useForm();
     const [shouldShowsocket_blockorder, setshouldShowsocket_blockorder] = useState(false);
     const [shouldShowSecondsForMonitorAndSnoop, setShouldShowSecondsForMonitorAndSnoop] = useState(false);
@@ -23,31 +28,40 @@ export default function controldialog({ onBaseOrderChange, systemIP }) {
         if (baseorder === 'socket_block') {
             const ip = form.getFieldValue('IPaddr');
             const seconds = form.getFieldValue('seconds');
-            command = `${systemIP} get_ebpf_data socket_block ${ip} ${seconds} show`;
+            command = `${systemIP} get_ebpf_data socket_block,${ip} ${seconds}`;
         } else if (baseorder === 'ssh_monitor') {
             const seconds = form.getFieldValue('seconds');
             command = `${systemIP} get_ebpf_data ssh_monitor ${seconds}`;
         } else if (baseorder === 'opensnoop') {
             const seconds = form.getFieldValue('seconds');
-            command = `${systemIP} get_ebpf_data opensnoop ${seconds} show`;
+            command = `${systemIP} get_ebpf_data opensnoop ${seconds}`;
         } else if (baseorder === 'stop_ebpf_session opensnoop') {
             command = `${systemIP} stop_ebpf_session opensnoop`;
         }
         console.log(command)
-        socket.emit('command', command);
+        if (command) {
+            socket.send(command);
+            socket.onmessage = (event) => {
+                handleResponse(event.data);
+            };
+    
+        }
     }
 
-    useEffect(() => {
-        socket.on('response', (response) => {
-            console.log('Server response:', response);
-            setServerResponse(response);
-        });
-        return () => {
-            socket.off('response');
-        };
-    }, []);
+    // useEffect(() => {
+    //     const handleResponse = (response: string) => {
+    //         console.log('Server response:', response);
+    //         setServerResponse(response);
+    //     };
 
-    const uploadflags = false;
+    //     socket.onmessage = (event) => {
+    //         handleResponse(event.data);
+    //     };
+
+    //     return () => {
+    //         socket.onmessage = null; // 清除事件监听器
+    //     };
+    // }, [setServerResponse]);
 
     const onChange = (value) => {
         console.log(`selected ${value}`);
@@ -103,7 +117,7 @@ export default function controldialog({ onBaseOrderChange, systemIP }) {
                     />
                 </Form.Item>
                 <Form.Item style={{ display: 'inline-block', width: '20%', marginLeft: '10%' }}>
-                    <Button onClick={() => uploadorder()} disabled={uploadflags}>
+                    <Button onClick={() => uploadorder()}>
                         执行命令
                     </Button>
                 </Form.Item>

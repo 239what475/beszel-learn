@@ -13,33 +13,33 @@ interface TableItem {
 const messagetable = ({ onHide }) => {
     const [data, setData] = useState<TableItem[]>([]);
     const [api, contextHolder] = notification.useNotification();
-    const socket = io('http://192.168.23.131:45876');
+    // const socket = io('http://192.168.23.131:12345');
 
-    useEffect(() => {
-        socket.on('newData', (rawData) => {
-            const newItem: TableItem = {
-                name: "",
-                age: "",
-                address: ""
-            };
-            if (rawData.includes('block')) {
-                api.info({
-                    message: "Block detected",
-                    description: "The received data contains 'block'.",
-                    placement: "bottomRight"
-                });
-            }
-            const splitData = rawData.split(' ');
-            newItem.name = splitData[0];
-            newItem.age = splitData[1];
-            newItem.address = splitData.slice(2).join(' ');
-            setData((prevData) => [...prevData, newItem]);
-        });
+    // useEffect(() => {
+    //     socket.on('newData', (rawData) => {
+    //         const newItem: TableItem = {
+    //             name: "",
+    //             age: "",
+    //             address: ""
+    //         };
+    //         if (rawData.includes('block')) {
+    //             api.info({
+    //                 message: "Block detected",
+    //                 description: "The received data contains 'block'.",
+    //                 placement: "bottomRight"
+    //             });
+    //         }
+    //         const splitData = rawData.split(' ');
+    //         newItem.name = splitData[0];
+    //         newItem.age = splitData[1];
+    //         newItem.address = splitData.slice(2).join(' ');
+    //         setData((prevData) => [...prevData, newItem]);
+    //     });
 
-        return () => {
-            socket.off('newData');
-        };
-    }, []);
+    //     return () => {
+    //         socket.off('newData');
+    //     };
+    // }, []);
 
     const columns = [
         {

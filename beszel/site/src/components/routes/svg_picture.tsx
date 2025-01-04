@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Spin, Image, Button, Row, Col } from 'antd';
-import { io } from "socket.io-client";
 import { CloseOutlined } from '@ant-design/icons';
-const socket = io('http://192.168.23.131:45876');
+// const socket = io('http://192.168.23.131:12345');
 
 const svgimage = ({ onHide }) => {
     const [loading, setLoading] = useState(true);
     const [imageSrc, setImageSrc] = useState('');
 
     useEffect(() => {
-        const onImageData = (data) => {
-            const svgData = data;
-            setImageSrc(`data:image/svg+xml;utf8,${encodeURIComponent(svgData)}`);
-            setLoading(false);
-        };
-        socket.on('imageData', onImageData);
-        return () => {
-            socket.off('imageData', onImageData);
-        };
+        // const onImageData = (data) => {
+        //     const svgData = data;
+        //     setImageSrc(`data:image/svg+xml;utf8,${encodeURIComponent(svgData)}`);
+        //     setLoading(false);
+        // };
+        // socket.on('imageData', onImageData);
+        // return () => {
+        //     socket.off('imageData', onImageData);
+        // };
     }, []);
 
     return (

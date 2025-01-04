@@ -13,9 +13,9 @@ const Controlpage = ({ systemIP }) => {
         Controldialog: true,
         Svgimage: false,
         Messagetable: false,
-        Servermonitor: true,
-        Systemmonitor: true,
-        Networkmonitor: true
+        Servermonitor: false,
+        Systemmonitor: false,
+        Networkmonitor: false
     });
 
     const handleBaseOrderChange = (baseOrder) => {

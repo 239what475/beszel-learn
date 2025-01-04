@@ -58,10 +58,10 @@ const ServerMonitor = ({ onHide }) => {
         return () => clearInterval(interval);
     }, []);
 
-    useEffect(() => {
-        console.log('responseTimes:', responseTimes);
-        console.log('requestsPerSecond:', requestsPerSecond);
-    }, [responseTimes, requestsPerSecond]);
+    // useEffect(() => {
+    //     console.log('responseTimes:', responseTimes);
+    //     console.log('requestsPerSecond:', requestsPerSecond);
+    // }, [responseTimes, requestsPerSecond]);
 
     return (
         <div>
