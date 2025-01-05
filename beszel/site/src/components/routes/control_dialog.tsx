@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from 'antd';
 import { Select } from 'antd';
 import { Form } from 'antd';
@@ -6,18 +6,15 @@ import { Input } from 'antd';
 import PriceInput from '../ui/IpInput';
 
 
-const socket = new WebSocket("ws://localhost:12345/ws");
-
-export default function controldialog({ onBaseOrderChange, systemIP }) {
+export default function controldialog({ uploadResponse, onBaseOrderChange, systemIP }) {
+    const socket = new WebSocket("ws://localhost:12345/ws");
     const handleResponse = (response: string) => {
-        //获得服务器回复，该部分代码未运行
         console.log('Server response:', response);
-        setServerResponse(response);
+        uploadResponse(response);
     };
     const [form] = Form.useForm();
     const [shouldShowsocket_blockorder, setshouldShowsocket_blockorder] = useState(false);
     const [shouldShowSecondsForMonitorAndSnoop, setShouldShowSecondsForMonitorAndSnoop] = useState(false);
-    const [serverResponse, setServerResponse] = useState('');
 
     function uploadorder() {
         const baseorder = form.getFieldValue('baseorder');
@@ -44,24 +41,8 @@ export default function controldialog({ onBaseOrderChange, systemIP }) {
             socket.onmessage = (event) => {
                 handleResponse(event.data);
             };
-    
         }
     }
-
-    // useEffect(() => {
-    //     const handleResponse = (response: string) => {
-    //         console.log('Server response:', response);
-    //         setServerResponse(response);
-    //     };
-
-    //     socket.onmessage = (event) => {
-    //         handleResponse(event.data);
-    //     };
-
-    //     return () => {
-    //         socket.onmessage = null; // 清除事件监听器
-    //     };
-    // }, [setServerResponse]);
 
     const onChange = (value) => {
         console.log(`selected ${value}`);
@@ -113,6 +94,7 @@ export default function controldialog({ onBaseOrderChange, systemIP }) {
                                 value: 'stop_ebpf_session opensnoop',
                                 label: 'stop_ebpf_session opensnoop',
                             },
+                            //todo cpu_profile
                         ]}
                     />
                 </Form.Item>
@@ -138,7 +120,6 @@ export default function controldialog({ onBaseOrderChange, systemIP }) {
                         </Form.Item>
                     </>
                 )}
-                {serverResponse && <p>{serverResponse}</p>}
             </Form>
         </>
     );
