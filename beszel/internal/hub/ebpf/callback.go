@@ -2,14 +2,17 @@ package ebpf
 
 import (
 	"fmt"
+	"io"
 	"os"
 	"os/exec"
 	"time"
+
+	"github.com/gorilla/websocket"
 )
 
 // 对于cpu_profile来说，展示结果是没有意义的，人根本看不懂
 // 这里选择的是通过FlameGraph绘制成火焰图
-func cpu_profiler_callback(c Command) (Callback, error) {
+func cpu_profiler_callback(c Command, conn *websocket.Conn) (Callback, error) {
 	flameGraph := os.Getenv("FLAME_GRAPH")
 	if flameGraph == "" {
 		fmt.Println("FLAME_GRAPH not set, please set it to the path of flamegraph.pl")
@@ -41,14 +44,39 @@ func cpu_profiler_callback(c Command) (Callback, error) {
 
 			err = exec.Command("bash", "-c", fullCommand).Run()
 			if err != nil {
-				fmt.Println(" FlameGraph error : ", err)
+				msg := fmt.Sprintf("FlameGraph error : %s", err)
+				fmt.Println(msg)
+				conn.WriteMessage(websocket.CloseMessage, []byte(msg))
 				return
 			}
 
-			fmt.Println("run ebpf task (", c.generate(), ") success")
+			svgFile, err := os.Open(output_file)
+			if err != nil {
+				msg := fmt.Sprintf("open svg error : %s", err)
+				fmt.Println(msg)
+				conn.WriteMessage(websocket.CloseMessage, []byte(msg))
+				return
+			}
+			defer svgFile.Close()
+
+			svgBytes, err := io.ReadAll(svgFile)
+			if err != nil {
+				msg := fmt.Sprintf("read svg data error : %s", err)
+				fmt.Println(msg)
+				conn.WriteMessage(websocket.CloseMessage, []byte(msg))
+				return
+			}
+
+			conn.WriteMessage(websocket.BinaryMessage, svgBytes)
+
+			fmt.Println("default callback end")
+			msg := websocket.FormatCloseMessage(websocket.CloseNormalClosure, "end success")
+			conn.WriteMessage(websocket.CloseMessage, msg)
 		},
 		err: func(err error) {
-			fmt.Println("run ebpf task (", c.generate(), ") error : ", err)
+			msg := fmt.Sprint("run ebpf task (", c.generate(), ") error : ", err)
+			fmt.Println(msg)
+			conn.WriteMessage(websocket.CloseMessage, []byte(msg))
 		},
 	}
 

@@ -18,3 +18,5 @@ beszel/site/src/locales/**/*.ts
 
 .log
 my_test.sh
+
+20*.svg

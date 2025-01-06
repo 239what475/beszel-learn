@@ -93,7 +93,7 @@ func handle_ebpf_cmd(sshClientConfig *ssh.ClientConfig, conn *websocket.Conn) {
 
 	// 特定指令可能有特定实现
 	if strings.HasPrefix(c.subcommand, "cpu_profile") {
-		callback, err = cpu_profiler_callback(c)
+		callback, err = cpu_profiler_callback(c, conn)
 		if err != nil {
 			fmt.Println("Error in cpu_profiler", "err", err)
 			conn.WriteMessage(websocket.CloseMessage, []byte("cpu_profiler_callback error"))
