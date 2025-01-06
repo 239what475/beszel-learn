@@ -1,7 +1,7 @@
-import React, { useState } from'react';
+import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import Controldialog from './control_dialog.tsx';
-import Svgimage from './svg_picture.tsx';
+import Cpumonitor from './cpu_monitor.tsx';
 import Opensnoopmonitor from './opensnoop_order.tsx';
 import Servermonitor from './server_monitor.tsx';
 import Systemmonitor from './system_monitor.tsx';
@@ -12,7 +12,7 @@ const Controlpage = ({ systemIP }) => {
     const [iscontrolModalOpen, setcontrolModalOpen] = useState(false);
     const [components, setComponents] = useState({
         Controldialog: true,
-        Svgimage: false,
+        Cpumonitor: false,
         Opensnoopmonitor: false,
         Servermonitor: false,
         Systemmonitor: false,
@@ -21,62 +21,71 @@ const Controlpage = ({ systemIP }) => {
     });
     const [socket_block_responses, setSocket_Block_Responses] = useState(''); //socket_block
     const [ssh_monitor_responses, setSsh_Monitor_Responses] = useState(''); //ssh_monitor
+    const [cpu_monitor_responses, setCpu_monitor_Responses] = useState('');
     //下述缺乏数据特征
     //const [opensnoop_responses, setOpensnoop_Responses] = useState(String);
-    const uploadResponse = (response) => {
+    const uploadResponse = async (response) => {
         //对命令进行分类
         //socket_block type
-        console.log("中心页面接收到："+ response)
-        if(response.startsWith('Comm')){
-            setSocket_Block_Responses(response)
-        }else if (response.startsWith('register')){
-            setSsh_Monitor_Responses(response)
+        console.log("中心页面接收到：" + response);
+        if (response instanceof Blob) {
+            console.log("处理Blob数据")
+            const blob = new Blob([response], { type: 'image/svg+xml' });
+            const SVGurl = URL.createObjectURL(blob);
+            console.log("输入：" + SVGurl)
+            setCpu_monitor_Responses(SVGurl);
+        } else if (response.startsWith('Comm')) {
+            setSocket_Block_Responses(response);
+        } else if (response.startsWith('register')) {
+            setSsh_Monitor_Responses(response);
         }
-    }
+    };
 
     const handleBaseOrderChange = (baseOrder) => {
-        const newComponents = {...components };
-        if (baseOrder ==='socket_block') {
+        const newComponents = { ...components };
+        if (baseOrder === 'socket_block') {
             newComponents.Socketblockmonitor = true;
-        } else if (baseOrder ==='ssh_monitor') {
+        } else if (baseOrder === 'ssh_monitor') {
             newComponents.Sshmonitor = true;
         } else if (baseOrder === 'opensnoop') {
             newComponents.Opensnoopmonitor = true;
+        } else if (baseOrder === 'cpu_profile') {
+            newComponents.Cpumonitor = true
         }
         setComponents(newComponents);
     };
 
-    const handleHideSvgimage = () => {
-        const newComponents = {...components };
-        newComponents.Svgimage = false;
+    const handleHideCpumonitor = () => {
+        const newComponents = { ...components };
+        newComponents.Cpumonitor = false;
         setComponents(newComponents);
     };
 
     const handleHideOpensnoopmonitor = () => {
-        const newComponents = {...components };
+        const newComponents = { ...components };
         newComponents.Opensnoopmonitor = false;
         setComponents(newComponents);
     };
 
     const handleHideSocketblockmonitor = () => {
-        const newComponents = {...components };
+        const newComponents = { ...components };
         newComponents.Socketblockmonitor = false;
         setComponents(newComponents);
     };
 
     const handleHideServermonitor = () => {
-        const newComponents = {...components };
+        const newComponents = { ...components };
         newComponents.Servermonitor = false;
         setComponents(newComponents);
     };
 
     const handleHideSystemmonitor = () => {
-        const newComponents = {...components };
+        const newComponents = { ...components };
         newComponents.Systemmonitor = false;
         setComponents(newComponents);
     };
     const handleHideSshmonitor = () => {
-        const newComponents = {...components };
+        const newComponents = { ...components };
         newComponents.Sshmonitor = false;
         setComponents(newComponents);
     };
@@ -116,12 +125,13 @@ const Controlpage = ({ systemIP }) => {
                                     style={{ width: 'calc(50% - 5px)' }}
                                 >
                                     {componentName === "Controldialog" && <Controldialog uploadResponse={uploadResponse} onBaseOrderChange={handleBaseOrderChange} systemIP={systemIP} />}
-                                    {componentName === "Svgimage" && <Svgimage onHide={handleHideSvgimage}/>}
-                                    {componentName === "Opensnoopmonitor" && <Opensnoopmonitor onHide={handleHideOpensnoopmonitor}/>}
-                                    {componentName === "Servermonitor" && <Servermonitor onHide={handleHideServermonitor}/>}
-                                    {componentName === "Systemmonitor" && <Systemmonitor onHide={handleHideSystemmonitor}/>}
-                                    {componentName === "Socketblockmonitor" && <Socketblockmonitor onHide={handleHideSocketblockmonitor} socket_block_data={socket_block_responses}/>}
-                                    {componentName === "Sshmonitor" && <Sshmonitor onHide={handleHideSshmonitor} ssh_monitor_data={ssh_monitor_responses}/>}
+                                    {/* 待添加 */}
+                                    {componentName === "Cpumonitor" && <Cpumonitor onHide={handleHideCpumonitor} cpu_monitor_data={cpu_monitor_responses} />}
+                                    {componentName === "Opensnoopmonitor" && <Opensnoopmonitor onHide={handleHideOpensnoopmonitor} />}
+                                    {componentName === "Servermonitor" && <Servermonitor onHide={handleHideServermonitor} />}
+                                    {componentName === "Systemmonitor" && <Systemmonitor onHide={handleHideSystemmonitor} />}
+                                    {componentName === "Socketblockmonitor" && <Socketblockmonitor onHide={handleHideSocketblockmonitor} socket_block_data={socket_block_responses} />}
+                                    {componentName === "Sshmonitor" && <Sshmonitor onHide={handleHideSshmonitor} ssh_monitor_data={ssh_monitor_responses} />}
                                 </div>
                             );
                         }

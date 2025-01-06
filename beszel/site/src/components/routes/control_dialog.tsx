@@ -14,7 +14,7 @@ export default function controldialog({ uploadResponse, onBaseOrderChange, syste
     };
     const [form] = Form.useForm();
     const [shouldShowsocket_blockorder, setshouldShowsocket_blockorder] = useState(false);
-    const [shouldShowSecondsForMonitorAndSnoop, setShouldShowSecondsForMonitorAndSnoop] = useState(false);
+    const [ShouldOnlyShowseconds, setShouldOnlyShowseconds] = useState(false);
 
     function uploadorder() {
         const baseorder = form.getFieldValue('baseorder');
@@ -22,18 +22,19 @@ export default function controldialog({ uploadResponse, onBaseOrderChange, syste
             onBaseOrderChange(baseorder);
         }
         let command;
+        const ip = form.getFieldValue('IPaddr');
+        const seconds = form.getFieldValue('seconds');
         if (baseorder === 'socket_block') {
-            const ip = form.getFieldValue('IPaddr');
-            const seconds = form.getFieldValue('seconds');
             command = `${systemIP} get_ebpf_data socket_block,${ip} ${seconds}`;
         } else if (baseorder === 'ssh_monitor') {
-            const seconds = form.getFieldValue('seconds');
             command = `${systemIP} get_ebpf_data ssh_monitor ${seconds}`;
         } else if (baseorder === 'opensnoop') {
-            const seconds = form.getFieldValue('seconds');
             command = `${systemIP} get_ebpf_data opensnoop ${seconds}`;
         } else if (baseorder === 'stop_ebpf_session opensnoop') {
+            //命令存疑
             command = `${systemIP} stop_ebpf_session opensnoop`;
+        } else if (baseorder === 'cpu_profile') {
+            command = `${systemIP} get_ebpf_data cpu_profile ${seconds}`;
         }
         console.log(command)
         if (command) {
@@ -47,7 +48,7 @@ export default function controldialog({ uploadResponse, onBaseOrderChange, syste
     const onChange = (value) => {
         console.log(`selected ${value}`);
         setshouldShowsocket_blockorder(value === 'socket_block');
-        setShouldShowSecondsForMonitorAndSnoop(value === 'ssh_monitor' || value === 'opensnoop');
+        setShouldOnlyShowseconds(value === 'ssh_monitor' || value === 'opensnoop' || value === 'cpu_profile');
     };
 
     const onSearch = (value) => {
@@ -56,7 +57,7 @@ export default function controldialog({ uploadResponse, onBaseOrderChange, syste
 
     useEffect(() => {
         // 当状态变化时，会触发重新渲染
-    }, [shouldShowsocket_blockorder, shouldShowSecondsForMonitorAndSnoop]);
+    }, [shouldShowsocket_blockorder, ShouldOnlyShowseconds]);
 
     return (
         <>
@@ -94,7 +95,10 @@ export default function controldialog({ uploadResponse, onBaseOrderChange, syste
                                 value: 'stop_ebpf_session opensnoop',
                                 label: 'stop_ebpf_session opensnoop',
                             },
-                            //todo cpu_profile
+                            {
+                                value: 'cpu_profile',
+                                label: 'cpu_profile',
+                            },
                         ]}
                     />
                 </Form.Item>
@@ -113,7 +117,7 @@ export default function controldialog({ uploadResponse, onBaseOrderChange, syste
                         </Form.Item>
                     </>
                 )}
-                {shouldShowSecondsForMonitorAndSnoop && (
+                {ShouldOnlyShowseconds && (
                     <>
                         <Form.Item layout="horizontal" name="seconds" labelCol={{ span: 4 }} wrapperCol={{ span: 16 }} label="时间（秒）：" rules={[{ required: true, message: '请输入时间' }]}>
                             <Input prefix="seconds" suffix="秒" type="number" />
