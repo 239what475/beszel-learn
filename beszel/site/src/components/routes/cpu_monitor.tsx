@@ -19,7 +19,7 @@ const cpumonitor = ({ onHide, cpu_monitor_data }) => {
         <>
             <div style={{ width: '721px', height: '400px' }}>
                 <Row>
-                    <Col span={22}></Col>
+                    <Col span={22} style={{ fontSize: '24px', lineHeight: '24px', textAlign: 'center'}}>cpu_monitor</Col>
                     <Col span={2}>
                         <Button icon={<CloseOutlined />} onClick={onHide}></Button>
                     </Col>
@@ -27,7 +27,7 @@ const cpumonitor = ({ onHide, cpu_monitor_data }) => {
                 <Row>
                     <Col span={24} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         {loading && <Spin />}
-                        {svgContent && <Image src={svgContent} />}
+                        {svgContent && <Image src={svgContent} height={350}/>}
                     </Col>
                 </Row>
             </div>
