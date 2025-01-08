@@ -7,6 +7,7 @@ import Servermonitor from './server_monitor.tsx';
 import Systemmonitor from './system_monitor.tsx';
 import Socketblockmonitor from './socket_block_order.tsx';
 import Sshmonitor from './ssh_monitor.tsx';
+import Oommonitor from './oom_monitor.tsx';
 
 const Controlpage = ({ systemIP }) => {
     const [iscontrolModalOpen, setcontrolModalOpen] = useState(false);
@@ -17,13 +18,14 @@ const Controlpage = ({ systemIP }) => {
         Servermonitor: false,
         Systemmonitor: false,
         Socketblockmonitor: false,
-        Sshmonitor: false
+        Sshmonitor: false,
+        Oommonitor: false,
     });
     const [socket_block_responses, setSocket_Block_Responses] = useState(''); //socket_block
     const [ssh_monitor_responses, setSsh_Monitor_Responses] = useState(''); //ssh_monitor
     const [cpu_monitor_responses, setCpu_monitor_Responses] = useState('');
-    //下述缺乏数据特征
-    //const [opensnoop_responses, setOpensnoop_Responses] = useState(String);
+    const [oom_monitor_responses, setOom_monitor_responses] = useState<any[]>([]);
+
     const uploadResponse = async (response) => {
         //对命令进行分类
         //socket_block type
@@ -38,6 +40,9 @@ const Controlpage = ({ systemIP }) => {
             setSocket_Block_Responses(response);
         } else if (response.startsWith('register')) {
             setSsh_Monitor_Responses(response);
+        }else if (response.includes('OOM kill')) {
+            setOom_monitor_responses(prevResponses => [...prevResponses, response]);
+            console.log('获得OOM结果'+oom_monitor_responses)
         }
     };
 
@@ -51,6 +56,8 @@ const Controlpage = ({ systemIP }) => {
             newComponents.Opensnoopmonitor = true;
         } else if (baseOrder === 'cpu_profile') {
             newComponents.Cpumonitor = true
+        } else if (baseOrder === 'oom_monitor') {
+            newComponents.Oommonitor = true
         }
         setComponents(newComponents);
     };
@@ -89,8 +96,11 @@ const Controlpage = ({ systemIP }) => {
         newComponents.Sshmonitor = false;
         setComponents(newComponents);
     };
-
-
+    const handleHideOommonitor = () => {
+        const newComponents = { ...components };
+        newComponents.Oommonitor = false;
+        setComponents(newComponents);
+    };
     const showModal = () => {
         setcontrolModalOpen(true);
     };
@@ -132,6 +142,7 @@ const Controlpage = ({ systemIP }) => {
                                     {componentName === "Systemmonitor" && <Systemmonitor onHide={handleHideSystemmonitor} />}
                                     {componentName === "Socketblockmonitor" && <Socketblockmonitor onHide={handleHideSocketblockmonitor} socket_block_data={socket_block_responses} />}
                                     {componentName === "Sshmonitor" && <Sshmonitor onHide={handleHideSshmonitor} ssh_monitor_data={ssh_monitor_responses} />}
+                                    {componentName === "Oommonitor" && <Oommonitor onHide={handleHideOommonitor} oom_monitor_data={oom_monitor_responses} />}
                                 </div>
                             );
                         }

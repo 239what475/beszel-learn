@@ -43,6 +43,12 @@ const socketblockmonitor = ({ onHide, socket_block_data }) => {
             const parsed = parseMessage(socket_block_data);
             if (parsed) {
                 setTempData([...tempData, parsed]);
+                if (socket_block_data.includes('block')) {
+                    api.info({
+                        message: 'Socket Block Detected',
+                        description: socket_block_data
+                    });
+                }
             }
         }
 
@@ -102,6 +108,7 @@ const socketblockmonitor = ({ onHide, socket_block_data }) => {
             </Row>
             <Table columns={columns} dataSource={data} />
             {contextHolder}
+
         </>
     );
 };

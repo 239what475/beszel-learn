@@ -35,7 +35,9 @@ export default function controldialog({ uploadResponse, onBaseOrderChange, syste
             command = `${systemIP} stop_ebpf_session opensnoop`;
         } else if (baseorder === 'cpu_profile') {
             command = `${systemIP} get_ebpf_data cpu_profile ${seconds}`;
-        }
+        } else if (baseorder === 'oom_monitor') {
+            command = `${systemIP} get_ebpf_data oom_monitor ${seconds}`;
+        } 
         console.log(command)
         if (command) {
             socket.send(command);
@@ -48,7 +50,7 @@ export default function controldialog({ uploadResponse, onBaseOrderChange, syste
     const onChange = (value) => {
         console.log(`selected ${value}`);
         setshouldShowsocket_blockorder(value === 'socket_block');
-        setShouldOnlyShowseconds(value === 'ssh_monitor' || value === 'opensnoop' || value === 'cpu_profile');
+        setShouldOnlyShowseconds(value === 'ssh_monitor' || value === 'opensnoop' || value === 'cpu_profile' || value === 'oom_monitor');
     };
 
     const onSearch = (value) => {
@@ -98,6 +100,10 @@ export default function controldialog({ uploadResponse, onBaseOrderChange, syste
                             {
                                 value: 'cpu_profile',
                                 label: 'cpu_profile',
+                            },
+                            {
+                                value: 'oom_monitor',
+                                label: 'oom_monitor',
                             },
                         ]}
                     />
