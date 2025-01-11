@@ -8,6 +8,7 @@ import Systemmonitor from './system_monitor.tsx';
 import Socketblockmonitor from './socket_block_order.tsx';
 import Sshmonitor from './ssh_monitor.tsx';
 import Oommonitor from './oom_monitor.tsx';
+//import ServerResponseTimeChart from './server_responses_stats.tsx'
 
 const Controlpage = ({ systemIP }) => {
     const [iscontrolModalOpen, setcontrolModalOpen] = useState(false);
@@ -15,11 +16,12 @@ const Controlpage = ({ systemIP }) => {
         Controldialog: true,
         Cpumonitor: false,
         Opensnoopmonitor: false,
-        Servermonitor: false,
-        Systemmonitor: false,
+        Servermonitor: true,
+        Systemmonitor: true,
         Socketblockmonitor: false,
         Sshmonitor: false,
         Oommonitor: false,
+        //ServerResponseTimeChart:true
     });
     const [socket_block_responses, setSocket_Block_Responses] = useState(''); //socket_block
     const [ssh_monitor_responses, setSsh_Monitor_Responses] = useState(''); //ssh_monitor
@@ -143,6 +145,7 @@ const Controlpage = ({ systemIP }) => {
                                     {componentName === "Socketblockmonitor" && <Socketblockmonitor onHide={handleHideSocketblockmonitor} socket_block_data={socket_block_responses} />}
                                     {componentName === "Sshmonitor" && <Sshmonitor onHide={handleHideSshmonitor} ssh_monitor_data={ssh_monitor_responses} />}
                                     {componentName === "Oommonitor" && <Oommonitor onHide={handleHideOommonitor} oom_monitor_data={oom_monitor_responses} />}
+                                    {/* {componentName === "ServerResponseTimeChart" && <ServerResponseTimeChart/>} */}
                                 </div>
                             );
                         }
